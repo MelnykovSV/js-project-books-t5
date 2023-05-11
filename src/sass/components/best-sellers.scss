@@ -1,0 +1,123 @@
+.home-title {
+    margin-bottom: 40px;
+
+    font-size: 32px;
+    line-height: calc(38 / 32);
+    letter-spacing: -0.04em;
+
+    @media screen and (min-width: $tablet) {
+            font-size: 48px;
+            line-height: calc(52 / 48);
+        }
+
+&__accent {
+    color: var(--primary-akzent);
+}
+}
+
+.top-books {
+&__title {
+    margin-bottom: 18px;
+
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+
+    color: var(--text-secondary-light);
+
+    @media screen and (min-width: $tablet) {
+        line-height: calc(24 / 14);
+    }
+}
+
+&__button {
+    margin-bottom: 40px;
+    margin-left: auto;
+
+    display: block;
+    width: 124px;
+    height: 46px;
+
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+
+    background-color: transparent;
+    color: var(--primary-color);
+
+    border-radius: 40px;
+    border: 2px solid var(--primary-akzent);
+}
+}
+.books {
+    margin-bottom: 8px;
+
+    @media screen and (min-width: $tablet) {
+        margin-bottom: 20px;
+
+        display: flex;
+        gap: 25px;
+        }
+
+&__image {
+    margin-bottom: 14px;
+
+    width: 100%;
+
+    border-radius: 8px;
+
+    @media screen and (min-width: $tablet) {
+        height: 316px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        height: 256px;
+    }
+    
+}
+
+&__title {
+    margin-bottom: 4px;
+
+    font-size: 16px;
+    line-height: calc(18 / 16);
+    letter-spacing: -0.04em;
+
+    color: var(--primary-color);
+
+    display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+}
+
+&__text {
+    font-size: 12px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: calc(14 / 12);
+    letter-spacing: -0.04em;
+
+    color: var(--text-secondary-light);
+}
+  
+&__item:not(:first-child) {
+display: none;
+}
+
+&__item:nth-child(-n + 3) {
+    @media screen and (min-width: $tablet) {
+        display: block;
+        width: 218px;
+    }
+}
+}
+
+.books > .books__item {
+    @media screen and (min-width: $desktop) {
+        display: block;
+        width: 180px;
+    }
+}
+
