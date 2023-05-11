@@ -2,6 +2,8 @@
 @import './base/reset';
 @import './base/fonts';
 @import './abstracts/vars';
+@import './theme/light.scss';
+@import './theme/dark.scss';
 @import './base/common';
 
 @import './abstracts/mixins';
@@ -11,6 +13,8 @@
 
 // Reusable
 @import './layout/header';
+
+@import './components/switcher';
 
 @import './components/all-categories';
 @import './components/auth-test';
