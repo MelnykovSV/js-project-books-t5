@@ -1,0 +1,47 @@
+<div class="backdrop is-hidden" data-backdrop>
+  <div class="modal" data-modal>
+    <button type="button" class="modal__close" data-modal-close>
+      <svg class="modal__close-icon" width="24" height="24">
+        <use href="./images/icons.svg#icon-cross"></use>
+      </svg>
+    </button>
+    <div class="book__card">
+      <div class="thumb">
+        <a class="book__link js-link" href="${amazon_product_url}">
+          <!-- <img class="image" src="${book_image}" alt="${tags}" loading="lazy" /> -->
+          <img class="book__image" src="#" alt="${tags}" loading="lazy" />
+        </a>
+      </div>
+      <div class="info">
+        <p class="book__name">${list_name}</p>
+        <p class="book__author">${author}</p>
+        <p class="book__description">${description}</p>
+      </div>
+      <ul class="book__sales--link-list js-sales">
+        <li class="book__sales--link">
+          <!-- <a href="${buy_links.url}" target="_blank" rel="noopener noreferrer nofollow">"Amazon"</a> -->
+          <a href="#" target="_blank" rel="noopener noreferrer nofollow">
+            <img src="#" alt="Amazon" />
+          </a>
+        </li>
+        <li class="book__sales--link">
+          <!-- <a href="${buy_links.url}" target="_blank" rel="noopener noreferrer nofollow">"Apple Books"</a> -->
+          <a href="#" target="_blank" rel="noopener noreferrer nofollow">
+            <img src="#" alt="Apple Books" />
+          </a>
+        </li>
+        <li class="book__sales--link">
+          <!-- <a href="${buy_links.url}" target="_blank" rel="noopener noreferrer nofollow">"Bookshop"</a> -->
+          <a href="#" target="_blank" rel="noopener noreferrer nofollow">
+            <img src="#" alt="Bookshop" />
+          </a>
+        </li>
+      </ul>
+    </div>
+    <a href="#">
+      <button class="book__add-remove js-add-remove">
+        Add to shopping list
+      </button>
+    </a>
+  </div>
+</div>
