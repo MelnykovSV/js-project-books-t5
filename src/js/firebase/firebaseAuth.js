@@ -87,6 +87,8 @@ class FirebaseAuth {
       });
   }
 
+  //Procs every time when user status changes. Sets global state object depending on this status (from localstorage of firebase realtime database)
+
   authSentry() {
     onAuthStateChanged(auth, user => {
       if (user) {
