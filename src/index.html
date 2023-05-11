@@ -20,15 +20,33 @@
     />
   </head>
   <body>
+    <a href="./shopping-list.html">Test link on shopping list page</a>
+
+    <include src="./partials/testing/switcher.html"></include>
+
     <include src="./partials/common/header.html"></include>
 
-    <h1>Home</h1>
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla a
-      accusantium reprehenderit veritatis quos laboriosam tempore nihil, dolorem
-      numquam soluta? In illum eligendi accusantium mollitia dolore quo vitae
-      explicabo doloribus!
-    </p>
+    <main class="main">
+      <h1 class="visually-hidden">Application for finding books</h1>
+
+      <div class="container main__container">
+        <section class="categories-section">
+          <h2>TEST TITLE <span>ACCENT WORD</span></h2>
+
+          <div class="categories-root"></div>
+        </section>
+
+        <aside class="sidebar">
+          <ul class="categories-links-list">
+            <li class="categories-links-list__item">All categories</li>
+          </ul>
+
+          <include src="./partials/common/support.html"></include>
+        </aside>
+      </div>
+    </main>
+
+    <include src="./partials/common/single-book-popup.html"></include>
 
     <!-- <include src="./partials/testing/auth-component.html"></include>
     <include src="./partials/testing/sign-up-form.html"></include>
