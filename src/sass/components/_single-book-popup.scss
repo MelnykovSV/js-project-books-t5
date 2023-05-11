@@ -153,9 +153,9 @@
   margin: auto;
   display: flex;
 }
-// .modal__close-icon {
-
-// }
+.modal__close-icon {
+  stroke: var(--primary-color);
+}
 
 // .light {
 //  --primary-bg: #f6f6f6;
