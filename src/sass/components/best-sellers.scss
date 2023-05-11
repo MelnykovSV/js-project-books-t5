@@ -11,7 +11,7 @@
         }
 
 &__accent {
-    color: var(--list-category-accent-text);
+    color: var(--primary-akzent);
 }
 }
 
@@ -47,7 +47,7 @@
     color: var(--primary-color);
 
     border-radius: 40px;
-    border: 2px solid var(--list-category-accent-text);
+    border: 2px solid var(--primary-akzent);
 }
 }
 .books {
