@@ -7,22 +7,22 @@ body {
 }
 
 .container {
-  // max-width: $mobile;
-  // padding-left: 15px;
-  // padding-right: 15px;
-  // margin: 0 auto;
+  max-width: $mobile;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
 
-  // @media screen and (min-width: $tablet) {
-  //   max-width: $tablet;
-  //   padding-left: 47px;
-  //   padding-right: 47px;
-  // }
+  @media screen and (min-width: $tablet) {
+    max-width: $tablet;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 
-  // @media screen and (min-width: $desktop) {
-  //   max-width: $desktop;
-  //   padding-left: 85px;
-  //   padding-right: 85px;
-  // }
+  @media screen and (min-width: $desktop) {
+    max-width: $desktop;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }
 
 .visually-hidden {

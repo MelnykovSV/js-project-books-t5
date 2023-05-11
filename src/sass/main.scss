@@ -7,10 +7,20 @@
 @import './abstracts/mixins';
 @import './abstracts/placeholders';
 
-@import './components/auth';
+// @import './components/auth-test';
 
 // Reusable
-// @import './layout/header';
-// @import './layout/footer';
+@import './layout/header';
 
-// Main page
+@import './components/all-categories';
+@import './components/auth-test';
+@import './components/paginator';
+@import './components/sign-in-form';
+@import './components/sign-up-form';
+@import './components/single-book-card';
+@import './components/single-book-popup';
+@import './components/single-category';
+@import './components/support';
+@import './components/best-sellers';
+@import './components/shopping-list';
+@import './components/back-to-top-button';
