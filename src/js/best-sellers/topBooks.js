@@ -1,10 +1,11 @@
 import { fetchTopBooks } from '../api';
 import { createMarkupAllBooks } from '../best-sellers/markupTopBooks';
 
-const booksList = document.querySelector('.top-books');
+const categoriesRoot = document.querySelector('.categories-root');
 
 export async function getAllTopBooks() {
   const { data } = await fetchTopBooks();
   console.log(data);
-  booksList.insertAdjacentHTML('beforeend', createMarkupAllBooks(data));
+  categoriesRoot.insertAdjacentHTML('beforeend', createMarkupAllBooks(data));
 }
+getAllTopBooks();

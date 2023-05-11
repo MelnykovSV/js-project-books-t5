@@ -1,5 +1,5 @@
 export function createMarkupAllBooks(data) {
-  return data
+  return `<ul class="top-books list">${data
     .map(({ list_name, books }) => {
       return `
       <li>
@@ -11,7 +11,7 @@ export function createMarkupAllBooks(data) {
         </li>
         `;
     })
-    .join('');
+    .join('')}</ul>`;
 }
 function createMarkupBook(books) {
   return books
@@ -19,9 +19,7 @@ function createMarkupBook(books) {
       ({ book_image, title, author, _id }) => `
   <li class="books__item list" data-book-id="${_id}">
     <img class="books__image" src="${book_image}" alt="book ${title}" />
-    <h4 class="books__title">${
-      title.length < 17 ? title : title.slice(0, 17) + '...'
-    }</h4>
+    <h4 class="books__title">${title}</h4>
     <p class="books__text">${author}</p>
   </li>
 `
