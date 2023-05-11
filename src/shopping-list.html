@@ -20,9 +20,27 @@
     />
   </head>
   <body>
+    <a href="./index.html">Test link on home page</a>
+
+    <include src="./partials/testing/switcher.html"></include>
+
     <include src="./partials/common/header.html"></include>
 
-    <h1>Shopping List</h1>
+    <main>
+      <div class="container">
+        <section class="shopping-list-section">
+          <h1>Shopping List</h1>
+
+          <div class="books-root"></div>
+
+          <include src="./partials/shopping-list/paginator.html"></include>
+        </section>
+
+        <aside class="sidebar">
+          <include src="./partials/common/support.html"></include>
+        </aside>
+      </div>
+    </main>
 
     <script type="module" src="./index.js"></script>
   </body>
