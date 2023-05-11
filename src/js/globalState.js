@@ -2,20 +2,9 @@ import databaseUtils from './firebase/firebaseDatabase';
 import authUtils from './firebase/firebaseAuth';
 import { INITIAL_STATE_VALUE } from '../constants';
 
-// let instance;
-
 let globalStateObject = JSON.parse(JSON.stringify(INITIAL_STATE_VALUE));
 
 class StateUtility {
-  // constructor() {
-  //   if (instance) {
-  //     throw new Error('New instance cannot be created!!');
-  //   }
-
-  //   instance = this;
-  //   this.globalStateObject = JSON.parse(JSON.stringify(INITIAL_STATE_VALUE));
-  // }
-
   get() {
     return globalStateObject;
   }
@@ -25,25 +14,19 @@ class StateUtility {
     this.saveData();
   }
 
-  favourite() {
-    return globalStateObject.favourite;
+  shoppingList() {
+    return globalStateObject.shoppingList;
   }
-  read() {
-    return globalStateObject.read;
-  }
+
   theme() {
     return globalStateObject.read;
   }
 
-  setFavourite(value) {
-    globalStateObject.favourite = value;
+  setShoppingList(value) {
+    globalStateObject.shoppingList = [...value];
     this.saveData();
   }
 
-  setRead(value) {
-    globalStateObject.read = value;
-    this.saveData();
-  }
   setTheme(value) {
     globalStateObject.theme = value;
     this.saveData();

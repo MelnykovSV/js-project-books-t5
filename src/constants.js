@@ -1,5 +1,4 @@
 export const INITIAL_STATE_VALUE = {
-  favourite: [],
-  read: [],
+  shoppingList: [],
   theme: 'light',
 };

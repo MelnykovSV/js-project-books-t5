@@ -1,5 +1,5 @@
-import globalState from './globalState';
-import authUtils from './firebase/firebaseAuth';
+import globalState from '../globalState';
+import authUtils from '../firebase/firebaseAuth';
 
 const authComponent = document.querySelector('.auth-component');
 const signUpForm = document.querySelector('.sign-up-form');
@@ -35,9 +35,9 @@ const stateManipulator = document.querySelector('.state-manipulator');
 
 stateManipulator.addEventListener('click', e => {
   switch (e.target.className) {
-    case 'add-to-favourite':
-      globalState.setFavourite([
-        ...globalState.favourite(),
+    case 'add-to-shopping-list':
+      globalState.setShoppingList([
+        ...globalState.shoppingList(),
         {
           title: 'some title',
           text: 'some text',
@@ -45,21 +45,13 @@ stateManipulator.addEventListener('click', e => {
       ]);
 
       break;
-    case 'remove-from-favourite': {
-      const newState = globalState.favourite();
+    case 'remove-from-shopping-list': {
+      const newState = globalState.shoppingList();
       newState.pop();
-      globalState.setFavourite(newState);
+      globalState.setShoppingList(newState);
       break;
     }
-    case 'add-to-read':
-      globalState.setRead([
-        ...globalState.read(),
-        {
-          title: 'some title',
-          text: 'some text',
-        },
-      ]);
-      break;
+
     case 'remove-from-read': {
       const newState1 = globalState.read();
       newState1.pop();
