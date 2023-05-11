@@ -1,7 +1,10 @@
 export function createMarkupAllBooks(data) {
-  return `<ul class="top-books list">${data
-    .map(({ list_name, books }) => {
-      return `
+  return `<h2 class="home-title">
+            Best Sellers <span class="home-title__accent">Books</span>
+          </h2>
+          <ul class="top-books list">${data
+            .map(({ list_name, books }) => {
+              return `
       <li>
       <h3 class="top-books__title">${list_name}</h3>
       <ul class="books list">
@@ -10,8 +13,8 @@ export function createMarkupAllBooks(data) {
         <button class="top-books__button" type="button">See more</button>
         </li>
         `;
-    })
-    .join('')}</ul>`;
+            })
+            .join('')}</ul>`;
 }
 function createMarkupBook(books) {
   return books
