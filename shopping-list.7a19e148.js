@@ -1,2 +1,2 @@
 const e=document.querySelector(".js-switcher-theme"),t=document.querySelector(".js-switcher-theme-checkbox"),c=document.querySelector("html");c.classList.add("light"),t.addEventListener("click",(function(){!function(){if(e.classList.toggle("switcher-theme--is-checked"),c.classList.contains("light"))return void c.classList.replace("light","dark");c.classList.replace("dark","light")}()}));
-//# sourceMappingURL=index.173ee8af.js.map
+//# sourceMappingURL=shopping-list.7a19e148.js.map
