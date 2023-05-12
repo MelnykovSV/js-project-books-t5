@@ -21,17 +21,22 @@
   </head>
   <body>
     <include src="./partials/common/header.html"></include>
-    <!-- <include src="./partials/common/single-book-popup.html"></include> -->
 
     <main class="main">
       <h1 class="visually-hidden">Application for finding books</h1>
 
       <div class="container main__container">
-        <section class="categories-section categories-root"></section>
+        <section class="categories-section categories-root">
+          <!-- ====Рендерить Best Sellers Books или Одну категорию   сюда==== -->
+          <!-- Пока нет рабочего списка категорий, можно для тестирования добавить куда-то в боди кнопку, которая будет рендерить Одну категорию (можно взять какую-то одну фиксированиую) вместо Best Sellers Books   -->
+        </section>
 
         <aside class="sidebar">
           <ul class="categories-links-list">
-            <li class="categories-links-list__item">All categories</li>
+            <li class="categories-links-list__item">
+              <a href="#">All categories</a>
+            </li>
+            <!-- ====Рендерить список категорий сюда==== -->
           </ul>
 
           <include src="./partials/common/support.html"></include>
@@ -41,16 +46,12 @@
 
     <!-- <include src="./partials/common/single-book-popup.html"></include> -->
 
-    <svg class="" width="30" height="30">
-      <use href="./images/icons.svg#icon-cross"></use>
-    </svg>
-
     <!-- <include src="./partials/testing/auth-component.html"></include>
     <include src="./partials/testing/sign-up-form.html"></include>
     <include src="./partials/testing/sign-in-form.html"></include>
     <include src="./partials/testing/test-state-manipulator.html"></include> -->
 
-    <include src="./partials/not-for-include/single-category.html"></include>
+    <include src="./partials/markup-to-render/single-category.html"></include>
 
     <script type="module" src="./index.js"></script>
   </body>
