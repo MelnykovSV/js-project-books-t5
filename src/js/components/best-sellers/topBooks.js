@@ -1,5 +1,5 @@
-import { fetchTopBooks } from '../api';
-import { createMarkupAllBooks } from '../best-sellers/markupTopBooks';
+import { fetchTopBooks } from '../../api';
+import { createMarkupAllBooks } from './markupTopBooks';
 
 const categoriesRoot = document.querySelector('.categories-root');
 
