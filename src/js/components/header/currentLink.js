@@ -1,7 +1,13 @@
 onCurrentLink();
 
 function onCurrentLink() {
-  const pathName = window.location.pathname;
+  let pathName = window.location.pathname;
+
+  console.log(pathName);
+
+  if (pathName === '/') {
+    pathName = '/index.html';
+  }
 
   const links = document.querySelectorAll(`[href="${pathName}"]`);
 
