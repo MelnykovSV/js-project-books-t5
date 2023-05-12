@@ -3,8 +3,6 @@ onCurrentLink();
 function onCurrentLink() {
   let pathName = window.location.pathname;
 
-  console.log(pathName);
-
   if (pathName === '/') {
     pathName = '/index.html';
   }
