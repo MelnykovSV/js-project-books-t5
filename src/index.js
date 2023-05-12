@@ -1,3 +1,4 @@
 // import './js/testing/authTest';
-import './js/switcher';
-import './js/best-sellers/topBooks';
+import './js/components/header/index';
+// import './js/best-sellers/topBooks';
+import './js/components/best-sellers/topBooks';
