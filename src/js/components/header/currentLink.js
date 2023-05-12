@@ -1,5 +1,11 @@
-(function () {
-  const pathName = window.location.pathname;
+onCurrentLink();
+
+function onCurrentLink() {
+  let pathName = window.location.pathname;
+
+  if (pathName === '/') {
+    pathName = '/index.html';
+  }
 
   const links = document.querySelectorAll(`[href="${pathName}"]`);
 
@@ -8,4 +14,4 @@
       link.classList.add('page-nav__link--current');
     }
   });
-})();
+}
