@@ -1,7 +1,7 @@
 :root {
   // ======================COMMON======================
-  --primary-dark: #111111;
-  --primary-light: #ffffff;
+  // --primary-dark: #111111;
+  // --primary-light: #ffffff;
   --secondary-light: #e0e0e0;
 
   --primary-akzent: #4f2ee8;
@@ -11,13 +11,13 @@
 
   --text-secondary-light: #b4afaf;
 
-  --logo-dark: #000000;
+  // --logo-dark: #000000;
 
-  --logo-light: #f3f3f3;
+  // --logo-light: #f3f3f3;
 
   // ======================RGBA======================
 
-  --text-list-rgb: rgba(17, 17, 17, 0.6);
+  // --text-list-rgb: rgba(17, 17, 17, 0.6);
 
   --primary-akzent-rgba: rgba(79, 46, 232, 0.4);
 
@@ -26,13 +26,22 @@
 
   // ======================BACKGROUND======================
 
-  --bg-light: #f6f6f6;
-  --bg-dark: #202024;
+  // --bg-light: #f6f6f6;
+  // --bg-dark: #202024;
 
   // ======================TRANSITIONS======================
 
   --time: 300ms;
   --cubic: linear;
+
+  // ======================SWITCHER========================
+
+  --switcher-bg-light: linear-gradient(180deg, #4f2ee8 0%, #dcdcdc 100%);
+  --switcher-bg-dark: linear-gradient(180deg, #4f2ee8 0%, #686868 100%);
+  --switcher-status: linear-gradient(180deg, #ffffff 0%, #f7f7f7 100%);
+  --switcher-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+  --switcher-status-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1),
+    0px 2px 2px rgba(0, 0, 0, 0.1), 1px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 // ======================BREAKPOINTS======================

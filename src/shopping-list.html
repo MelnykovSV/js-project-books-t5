@@ -20,34 +20,44 @@
     />
   </head>
   <body>
+    <a href="./index.html">Test link on home page</a>
+
+    <include src="./partials/testing/switcher.html"></include>
+
     <include src="./partials/common/header.html"></include>
 
     <main>
-      <include src="./partials/shopping-list/shopping-list.html"></include>
+      <section class="shopping-list">
+        <div class="shopping-list__container container">
+          <!-- Sidebar -->
+          <aside class="sidebar sidebar--is-hide">
+            <include src="./partials/common/support.html"></include>
+          </aside>
+
+          <div class="shopping-list__wrapper">
+            <h1 class="shopping-list__title">
+              Shopping <span class="shopping-list__title--accent">List</span>
+            </h1>
+
+            <div class="shopping-list__box">
+              <!-- Cards list -->
+              <ul class="shopping-list__cards list">
+                <!-- Card -->
+              </ul>
+              <!-- Plug -->
+              <div class="plug">
+                <p class="plug__text">
+                  This page is empty, add some books and proceed to order.
+                </p>
+                <div class="plug__img"></div>
+              </div>
+
+              <include src="./partials/shopping-list/paginator.html"></include>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-
-    <!-- @media (min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    background-image: linear-gradient(
-        to right,
-        rgba(0, 0, 0, 0.65),
-        rgba(0, 0, 0, 0.65) 
-      ),
-      url('./../images/hero_images/hero-rest-mobile-img-2x.jpg?as=webp');
-  } -->
-
-    <!-- <picture> -->
-    <!-- Mobile -->
-    <!-- <source
-          srcset="
-            ./images/restaurant-about/restaurant-interior-mobile.jpg?as=webp&width=244 1x,
-            ./images/restaurant-about/restaurant-interior-mobile.jpg?as=webp&width=488 2x,
-            ./images/restaurant-about/restaurant-interior-mobile.jpg?as=webp&width=732 3x
-          "
-          media="(max-width:1023px)"
-          type="image/webp"
-        /> -->
 
     <script type="module" src="./index.js"></script>
   </body>

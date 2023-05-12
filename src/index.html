@@ -20,21 +20,43 @@
     />
   </head>
   <body>
+    <a href="./shopping-list.html">Test link on shopping list page</a>
+
+    <include src="./partials/testing/switcher.html"></include>
+
     <include src="./partials/common/header.html"></include>
     <a href="./shopping-list.html">shopping-list</a>
 
-    <h1>Home</h1>
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla a
-      accusantium reprehenderit veritatis quos laboriosam tempore nihil, dolorem
-      numquam soluta? In illum eligendi accusantium mollitia dolore quo vitae
-      explicabo doloribus!
-    </p>
+    <main class="main">
+      <h1 class="visually-hidden">Application for finding books</h1>
+
+      <div class="container main__container">
+        <section class="categories-section categories-root">
+          <!-- ====Рендерить Best Sellers Books или Одну категорию   сюда==== -->
+          <!-- Пока нет рабочего списка категорий, можно для тестирования добавить куда-то в боди кнопку, которая будет рендерить Одну категорию (можно взять какую-то одну фиксированиую) вместо Best Sellers Books   -->
+        </section>
+
+        <aside class="sidebar">
+          <ul class="categories-links-list">
+            <li class="categories-links-list__item">
+              <a href="#">All categories</a>
+            </li>
+            <!-- ====Рендерить список категорий сюда==== -->
+          </ul>
+
+          <include src="./partials/common/support.html"></include>
+        </aside>
+      </div>
+    </main>
+
+    <include src="./partials/common/single-book-popup.html"></include>
 
     <!-- <include src="./partials/testing/auth-component.html"></include>
     <include src="./partials/testing/sign-up-form.html"></include>
     <include src="./partials/testing/sign-in-form.html"></include>
     <include src="./partials/testing/test-state-manipulator.html"></include> -->
+
+    <include src="./partials/markup-to-render/single-category.html"></include>
 
     <script type="module" src="./index.js"></script>
   </body>
