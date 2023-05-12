@@ -1,0 +1,95 @@
+.pagination,
+.pagination__arrows,
+.pagination__pages,
+.pagination__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination {
+  gap: 14px;
+
+  &.is-hidden {
+    display: none;
+  }
+
+  @media screen and (min-width: $tablet) {
+    gap: 24px;
+  }
+}
+
+.pagination__pages {
+  gap: 8px;
+
+  @media screen and (min-width: $tablet) {
+    gap: 10px;
+  }
+}
+
+.pagination__arrows {
+  gap: 5px;
+
+  @media screen and (min-width: $tablet) {
+    gap: 8px;
+  }
+}
+
+.pagination__btn {
+  width: 38px;
+  height: 38px;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.22;
+
+  color: var(--logo-dark);
+
+  border-radius: 50%;
+  cursor: pointer;
+
+  background-color: transparent;
+  border: 1px solid var(--primary-dark);
+
+  &--active {
+    color: var(--primary-light);
+    background-color: var(--logo-dark);
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+.pagination__arrow-icon {
+  width: 20px;
+  height: 20px;
+
+  fill: currentColor;
+
+  &--double {
+    width: 25px;
+    height: 25px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 24px;
+    height: 24px;
+
+    &--double {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.next-arrow {
+  color: var(--logo-dark);
+  background-color: var(--secondary-akzent);
+}
+
+.prev-arrow {
+  color: var(--text-secondary-light);
+  background-color: var(--primary-dark);
+}
