@@ -7,6 +7,11 @@
   --primary-akzent: #4f2ee8;
   --secondary-akzent: #eac645;
 
+  --default-primary-color: #ffffff;
+  --default-secondary-color: #111111;
+
+  --user-bg: #f6f6f6;
+
   // ======================TEXT======================
 
   --text-secondary-light: #b4afaf;
@@ -33,6 +38,14 @@
 
   --time: 300ms;
   --cubic: linear;
+
+  // ======================MOBILE MENU========================
+
+  --mobile-menu-bg: radial-gradient(
+    183.6% 183.01% at 59.76% -23.42%,
+    #4f2ee8 18.03%,
+    #ffffff 100%
+  );
 
   // ======================SWITCHER========================
 
