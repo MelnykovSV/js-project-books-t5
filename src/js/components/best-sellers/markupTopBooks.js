@@ -5,7 +5,7 @@ export function createMarkupAllBooks(data) {
           <ul class="top-books list">${data
             .map(({ list_name, books }) => {
               return `
-      <li>
+      <li class="top-books__item">>
       <h3 class="top-books__title">${list_name}</h3>
       <ul class="books list">
         ${createMarkupBook(books)}
@@ -20,7 +20,7 @@ function createMarkupBook(books) {
   return books
     .map(
       ({ book_image, title, author, _id, description }) => `
-  <li class="books__item list" data-book-id="${_id}">
+  <li class="books__item list" data-id="${_id}">
     <div class="books__overlay">
     <img class="books__image" src="${book_image}" alt="book ${title}" />
     <p class="books__text--overlay">${
