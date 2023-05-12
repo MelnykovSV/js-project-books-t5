@@ -1,4 +1,6 @@
-(function () {
+onCurrentLink();
+
+function onCurrentLink() {
   const pathName = window.location.pathname;
 
   const links = document.querySelectorAll(`[href="${pathName}"]`);
@@ -8,4 +10,4 @@
       link.classList.add('page-nav__link--current');
     }
   });
-})();
+}
