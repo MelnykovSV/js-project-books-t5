@@ -1,94 +1,99 @@
-.backdrop {
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-
-  max-width: $mobile;
-  margin: 0 auto;
-  // height: 100%;
-  height: 800px;
+.book-backdrop {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  left: 0;
+  top: 0;
+  opacity: 1;
   padding-left: 20px;
   padding-right: 20px;
-  overflow-y: auto;
-
-  background-color: rgba(0, 0, 0, 0.2);
-  // border: 1px solid $logo-color;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  opacity: 1;
-  // transition: opacity 250ms $transition-values;
-
-  // &.is-hidden {
-  //  opacity: 0;
-  //  pointer-events: none;
-  // }
-
-  // &.is-hidden .modal {
-  //  transform: translate(-50%, -50%) scale(0.8);
-  // }
+  pointer-events: all;
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
-// .modal {
-//  position: absolute;
-//  top: 20px;
-//  left: 50%;
+// .backdrop {
+//   // position: fixed;
+//   // top: 0;
+//   // left: 0;
 
-//  max-width: 450px;
-//  width: calc(100% - 30px);
-//  overflow-y: auto;
-//  background-color: $primary-white-color;
-//  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-//   0px 2px 1px rgba(0, 0, 0, 0.2);
-//  border-radius: 4px;
-//  padding: 40px;
+//   max-width: $mobile;
+//   margin: 0 auto;
+//   // height: 100%;
+//   height: 800px;
+//   padding-left: 20px;
+//   padding-right: 20px;
+//   overflow-y: auto;
 
-//  transform: translate(-50%) scale(1);
-//  transition: transform 250ms $transition-values;
+//   background-color: rgba(0, 0, 0, 0.2);
+//   // border: 1px solid $logo-color;
+//   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+//   opacity: 1;
 
-//  @media screen and (min-width: 1200px) {
-//   top: 50%;
-//   transform: translate(-50%, -50%);
-//   max-width: 528px;
-//  }
+//   @media screen and (min-width: $tablet) {
+//     max-width: $tablet;
+//     padding-left: 95px;
+//     padding-right: 95px;
+//   }
+//   // transition: opacity 250ms $transition-values;
 
+//   // &.is-hidden {
+//   //  opacity: 0;
+//   //  pointer-events: none;
+//   // }
+
+//   // &.is-hidden .modal {
+//   //  transform: translate(-50%, -50%) scale(0.8);
+//   // }
 // }
 
-// .modal__close {
-//  @include centeredFlex(flex);
-//  position: absolute;
-//  right: 8px;
-//  top: 8px;
-//  width: 30px;
-//  height: 30px;
-//  border-radius: 50%;
-//  background: $primary-white-color;
-//  border: 1px solid rgba(0, 0, 0, 0.1);
-//  cursor: pointer;
-// }
-
-// .modal__close--icon {
-//  margin: auto;
-
-//  .modal__close:hover &,
-//  .modal__close:focus & {
-//   fill: $primary-accent-color;
-//   transition: fill 250ms $transition-values;
-//  }
-// }
-
-.modal {
+.book-modal {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 40px 24px;
   max-width: 335px;
+
   // width: calc(100% - 30px);
   // overflow-y: auto;
-  // background-color: var(--secondary-bg);
-  background-color: white;
-  // border: 1px solid var(--logo-color)
-  border: 1px solid black;
+  background-color: var(--secondary-bg);
+  // background-color: white;
+  border: 1px solid var(--logo-color);
+  // border: 1px solid black;
   border-radius: 5px;
+  @media screen and (min-width: $tablet) {
+    max-width: 579px;
+  }
+}
+.book__card {
+  @media screen and (min-width: $tablet) {
+    display: flex;
+  }
+}
+
+.book__box {
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.modal__close {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  cursor: pointer;
+  background-color: var(--secondary-bg);
+  border: none;
+  padding: 0;
+}
+
+.modal__close-icon {
+  stroke: var(--primary-color);
 }
 
 .thumb {
@@ -152,9 +157,17 @@
 
   margin: auto;
   display: flex;
+  margin-bottom: 4px;
 }
-.modal__close-icon {
-  stroke: var(--primary-color);
+
+.greetings {
+  font-size: 10px;
+  line-height: 1.2;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: rgba(17, 17, 17, 0.5);
+  max-width: 240px;
+  margin: auto;
 }
 
 // .light {
