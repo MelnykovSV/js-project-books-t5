@@ -51,3 +51,7 @@ passInput.addEventListener('input', e => {
       break;
   }
 });
+
+document
+  .querySelectorAll('.user-form__input')
+  .forEach(input => (input.placeholder = '  '));
