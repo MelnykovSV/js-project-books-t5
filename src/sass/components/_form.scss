@@ -46,6 +46,7 @@
   stroke: var(--primary-color);
   display: block;
   margin: 0;
+  pointer-events: none;
 }
 .user-form__input-container {
   position: relative;

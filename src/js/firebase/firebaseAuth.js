@@ -45,7 +45,11 @@ class FirebaseAuth {
           authComponent.classList.add('signed-out');
         })
         .finally(() => {
-          e.target.classList.add('visually-hidden');
+          // e.target.classList.add('visually-hidden');
+          document
+            .querySelector('.backdrop-form')
+            .classList.add('backdrop-form--is-hidden');
+          e.target.reset();
         });
     }
   };
@@ -70,18 +74,26 @@ class FirebaseAuth {
           );
         })
         .finally(() => {
-          e.target.classList.add('visually-hidden');
+          // e.target.classList.add('visually-hidden');
+          document
+            .querySelector('.backdrop-form')
+            .classList.add('backdrop-form--is-hidden');
+          e.target.reset();
         });
     }
   };
 
   signOutUser = () => {
-    authComponent.classList.remove('signed-in');
+    document.body.classList.remove('is-logged');
     signOut(auth)
-      .then(() => {})
+      .then(() => {
+        document
+          .querySelector('.js-user')
+          .classList.remove('user--is-active-btns-box');
+      })
       .catch(error => {
         // An error happened.
-        authComponent.classList.add('signed-in');
+        document.body.classList.add('is-logged');
         notification.error(
           [error.code, error.message],
           'Sorry, unexpected error occured'
@@ -105,10 +117,10 @@ class FirebaseAuth {
           }
         });
         authComponent.querySelector(
-          '.auth-component__user-email'
+          '.auth-component__user-name'
         ).textContent = `${user.displayName}`;
 
-        authComponent.classList.add('signed-in');
+        document.body.classList.add('is-logged');
       } else {
         // User is signed out
         if (localStorage.getItem('globalState')) {
@@ -215,7 +227,7 @@ class FirebaseAuth {
 
   updateUserInterface = name => {
     authComponent.querySelector(
-      '.auth-component__user-email'
+      '.auth-component__user-name'
     ).textContent = `${name}`;
   };
 
