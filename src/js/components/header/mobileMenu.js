@@ -36,3 +36,8 @@ window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
   openMenuBtn.setAttribute('aria-expanded', false);
   document.body.classList.remove('body-lock');
 });
+
+window.addEventListener('resize', () => {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
