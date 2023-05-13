@@ -25,7 +25,7 @@ authComponent.addEventListener('click', e => {
 });
 
 testButton.addEventListener('click', () => {
-  authUtils.getCurrentUserId();
+  authUtils.getUserProfile();
 });
 stateButton.addEventListener('click', () => {
   console.log(globalState.get());
@@ -64,8 +64,27 @@ stateManipulator.addEventListener('click', e => {
     case 'dark-theme':
       globalState.setTheme('dark');
       break;
-    case 'other-theme':
-      globalState.setTheme('other');
+  }
+});
+
+stateManipulator.addEventListener('submit', e => {
+  e.preventDefault();
+  switch (e.target.className) {
+    case 'update-form-name':
+      console.log(e.target.elements.name.value);
+      authUtils.updateUserName(e.target.elements.name.value);
+      break;
+  }
+  switch (e.target.className) {
+    case 'update-form-email':
+      console.log(e.target.elements.email.value);
+      authUtils.updateUserEmail(e.target.elements.email.value);
+      break;
+  }
+  switch (e.target.className) {
+    case 'update-form-password':
+      console.log(e.target.elements.password.value);
+      authUtils.updateUserPassword(e.target.elements.password.value);
       break;
   }
 });
