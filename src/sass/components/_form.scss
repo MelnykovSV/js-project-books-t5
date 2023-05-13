@@ -97,11 +97,11 @@
     transform: scale(60%) translate(-20px, -52px);
   }
 
-  &:not(:placeholder-shown) + .user-form__input-label {
-    background-color: var(--primary-bg);
-    transform-origin: left;
-    transform: scale(60%) translate(-20px, -52px);
-  }
+  // &:not(:placeholder-shown) + .user-form__input-label {
+  //   background-color: var(--primary-bg);
+  //   transform-origin: left;
+  //   transform: scale(60%) translate(-20px, -52px);
+  // }
 }
 .user-from__icon {
   position: absolute;
