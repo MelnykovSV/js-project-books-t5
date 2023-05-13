@@ -1,25 +1,35 @@
-const switcherEl = document.querySelector('.js-switcher-theme');
-const switcherCheckboxEl = document.querySelector(
-  '.js-switcher-theme-checkbox'
-);
+const KEY_LS_THEME = 'site-theme';
+
+const Theme = {
+  LIGHT: 'light',
+  DARK: 'dark',
+};
+
+const switcherCheckboxEl = document.querySelector('.js-switcher-theme');
 const htmlEl = document.querySelector('html');
 
-htmlEl.classList.add('light');
+switcherCheckboxEl.addEventListener('click', () => {
+  const isLight = htmlEl.classList.contains('light');
 
-switcherCheckboxEl.addEventListener('click', handleClick);
+  const theme = isLight ? Theme.DARK : Theme.LIGHT;
 
-function handleClick() {
-  toggleTheme();
-}
+  onChangeTheme(theme);
+});
 
-function toggleTheme() {
-  switcherEl.classList.toggle('switcher-theme--is-checked');
+function onChangeTheme(theme) {
+  const isLight = htmlEl.classList.contains('light');
 
-  if (htmlEl.classList.contains('light')) {
+  if (isLight && theme !== Theme.LIGHT) {
+    localStorage.setItem(KEY_LS_THEME, JSON.stringify(Theme.DARK));
+
     htmlEl.classList.replace('light', 'dark');
 
     return;
   }
 
-  htmlEl.classList.replace('dark', 'light');
+  if (theme !== Theme.DARK) {
+    localStorage.setItem(KEY_LS_THEME, JSON.stringify(Theme.LIGHT));
+
+    htmlEl.classList.replace('dark', 'light');
+  }
 }

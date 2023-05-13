@@ -78,19 +78,17 @@
     transition: opacity var(--time) var(--cubic);
   }
 
-  &--is-checked::before {
-    opacity: 1;
-  }
-
   @media screen and (min-width: $tablet) {
     margin-right: 24px;
   }
 }
 
-.switcher-theme__checkbox {
-  &:checked + .switcher-theme__status {
-    transform: translateX(20px);
-  }
+html.dark .switcher-theme::before {
+  opacity: 1;
+}
+
+html.dark .switcher-theme__status {
+  transform: translateX(20px);
 }
 
 .switcher-theme__status {
@@ -181,7 +179,7 @@
 
     position: absolute;
     z-index: -1;
-    top: 443px;
+    top: 0;
 
     display: block;
     width: 100%;
@@ -189,6 +187,7 @@
 
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: bottom;
 
     background-image: url('../images/mobile-menu/bg-img.png');
 
@@ -199,8 +198,11 @@
     }
 
     @media screen and (min-width: calc($mobile + 1px)) {
+      top: 443px;
+
       background-image: url('../images/mobile-menu/bg-img@3x.png');
       background-size: cover;
+      background-position: unset;
 
       @media (min-device-pixel-ratio: 2),
         (min-resolution: 192dpi),
@@ -218,19 +220,14 @@
 .menu-container__container {
   position: relative;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100%;
 
   &--is-hide {
     display: none;
   }
-}
-
-.menu-container__box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  height: 100%;
 }
 
 // user ---------------------------------------------

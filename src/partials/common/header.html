@@ -26,13 +26,10 @@
         </ul>
       </nav>
 
-      <label
-        class="switcher-theme js-switcher-theme"
-        aria-label="theme switcher"
-      >
+      <label class="switcher-theme" aria-label="theme switcher">
         <input
           type="checkbox"
-          class="switcher-theme__checkbox visually-hidden js-switcher-theme-checkbox"
+          class="switcher-theme__checkbox visually-hidden js-switcher-theme"
         />
 
         <span class="switcher-theme__status"></span>
@@ -109,45 +106,41 @@
 
   <div class="menu-container js-menu-container" id="mobile-menu">
     <div class="container menu-container__container">
-      <div class="menu-container__box">
-        <div class="user">
-          <div class="user__box">
-            <svg
-              class="user__avatar"
-              aria-label="user avatar"
-              width="19"
-              height="19"
-              fill="#4F2EE8"
-            >
-              <use href="./images/icons.svg#icon-user"></use>
-            </svg>
-          </div>
-
-          <p class="user__name">User name</p>
+      <div class="user">
+        <div class="user__box">
+          <svg
+            class="user__avatar"
+            aria-label="user avatar"
+            width="19"
+            height="19"
+            fill="#4F2EE8"
+          >
+            <use href="./images/icons.svg#icon-user"></use>
+          </svg>
         </div>
 
-        <nav class="page-nav">
-          <ul class="page-nav__list list">
-            <li>
-              <a class="page-nav__link" href="./index.html">Home</a>
-            </li>
-            <li>
-              <a class="page-nav__link" href="./shopping-list.html"
-                >Shopping list
-                <svg class="page-nav__icon" width="20" height="20">
-                  <use href="./images/icons.svg#icon-shopping-list"></use>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </nav>
-
-        <button class="header-btn log-out-btn" type="button">Log out</button>
+        <p class="user__name">User name</p>
       </div>
 
-      <button class="header-btn sign-up-btn sign-up-btn--is-hide" type="button">
-        Sign up
-      </button>
+      <nav class="page-nav">
+        <ul class="page-nav__list list">
+          <li>
+            <a class="page-nav__link" href="./index.html">Home</a>
+          </li>
+          <li>
+            <a class="page-nav__link" href="./shopping-list.html"
+              >Shopping list
+              <svg class="page-nav__icon" width="20" height="20">
+                <use href="./images/icons.svg#icon-shopping-list"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="header-btn log-out-btn" type="button">Log out</button>
+
+      <button class="header-btn sign-up-btn" type="button">Sign up</button>
     </div>
   </div>
 </div>
