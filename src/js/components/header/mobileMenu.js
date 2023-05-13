@@ -21,7 +21,7 @@ function onCloseMenu() {
   document.body.classList.remove('body-lock');
 }
 
-window.matchMedia('(min-width: 1024px)').addEventListener('change', e => {
+window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
   if (!e.matches) {
     return;
   }
@@ -35,4 +35,9 @@ window.matchMedia('(min-width: 1024px)').addEventListener('change', e => {
   closeMenuBtn.classList.add('menu-btn--hide');
   openMenuBtn.setAttribute('aria-expanded', false);
   document.body.classList.remove('body-lock');
+});
+
+window.addEventListener('resize', () => {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
 });
