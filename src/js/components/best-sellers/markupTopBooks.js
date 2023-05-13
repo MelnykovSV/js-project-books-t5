@@ -23,12 +23,12 @@ function createMarkupBook(books) {
   <li class="books__item list" data-id="${_id}">
     <div class="books__overlay">
     <img class="books__image" src="${book_image}" alt="book ${title}" />
-    <p class="books__text--overlay">${
-      description || 'Sorry, book`s description not found'
-    }</p>
+    <p class="books__text--overlay">Quick view</p>
     </div>
+    <div class="books__info">
     <h4 class="books__title">${title || 'Not found'}</h4>
     <p class="books__text">${author || 'Not found'}</p>
+    </div>
   </li>
 `
     )
