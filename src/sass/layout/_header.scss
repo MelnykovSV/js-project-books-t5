@@ -126,6 +126,8 @@ html.dark .switcher-theme__status {
 
   transition: all var(--time) var(--cubic);
 
+  cursor: pointer;
+
   &:hover {
     color: var(--primary-akzent);
   }
