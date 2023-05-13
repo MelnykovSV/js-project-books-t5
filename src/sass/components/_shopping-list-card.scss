@@ -1,3 +1,7 @@
+.card.is-hidden {
+  display: none;
+}
+
 .card {
   position: relative;
 
@@ -22,6 +26,8 @@
   right: 14px;
 
   border-radius: 50%;
+
+  cursor: pointer;
 
   @media screen and(min-width:$tablet) {
     top: 24px;
@@ -159,6 +165,10 @@
   &--amazon {
     width: 32px;
     height: 11px;
+  }
+
+  html.dark &--amazon {
+    filter: invert(1);
   }
 
   &:hover,

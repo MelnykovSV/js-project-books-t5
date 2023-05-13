@@ -36,7 +36,7 @@ class StateUtility {
   //Sets shoppingList value. Requires a single argument ('light'||'dark')
   setTheme(value) {
     globalStateObject.theme = value;
-    this.saveData();
+    this.saveData();   
   }
 
   //Writes global state object to local storage
