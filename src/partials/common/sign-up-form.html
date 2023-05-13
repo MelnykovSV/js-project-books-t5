@@ -1,15 +1,24 @@
-<form action="#" class="sign-in-form user-form hidden">
+<form action="#" class="user-form sign-up-form">
   <button class="user-form__close-button">
     <svg class="user-form__close-icon" width="28" height="28">
       <use href="images/icons.svg#icon-cross"></use>
     </svg>
   </button>
-
+  <div class="user-form__input-container user-form__name-input-container">
+    <input
+      type="text"
+      class="user-form__input name-input"
+      id="sign-up-name"
+      placeholder=" "
+      autocomplete="off"
+    />
+    <label for="password" class="user-form__input-label">Name</label>
+  </div>
   <div class="user-form__input-container user-form__email-input-container">
     <input
       type="text"
       class="user-form__input"
-      id="sign-in-email"
+      id="sign-up-email"
       placeholder=" "
       autocomplete="off"
     />
@@ -22,7 +31,7 @@
     <input
       type="password"
       class="user-form__input"
-      id="sign-in-password"
+      id="sign-up-password"
       placeholder=" "
       autocomplete="off"
     />
@@ -30,24 +39,27 @@
     <svg class="user-from__icon" width="28" height="28">
       <use href="images/icons.svg#icon-lock"></use>
     </svg>
-    <div class="password-bar strong visually-hidden"></div>
-    <div class="password-message"></div>
+    <div class="password-bar-container">
+      <div class="password-bar strong visually-hidden"></div>
+      <div class="password-message"></div>
+    </div>
   </div>
 
   <button
     type="submit"
-    class="user-form__sign-in-button user-form__submit-button"
+    class="user-form__sign-up-button user-form__submit-button"
   >
-    Sign in
+    Sign up
   </button>
+
   <ul class="user-form__form-type-switch form-type-switch">
     <li class="form-type-switch__item">
-      <a href="#" class="form-type-switch__link" data-form-type="sign-up"
+      <a href="#" class="form-type-switch__link active" data-form-type="sign-up"
         >Sign up</a
       >
     </li>
     <li class="form-type-switch__item">
-      <a href="#" class="form-type-switch__link active" data-form-type="sign-in"
+      <a href="#" class="form-type-switch__link" data-form-type="sign-in"
         >Sign in</a
       >
     </li>

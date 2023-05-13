@@ -4,6 +4,8 @@ body {
   line-height: calc(18 / 14);
   color: var(--primary-color);
   background-color: var(--primary-bg);
+
+  overflow-x: hidden;
 }
 
 .body-lock {

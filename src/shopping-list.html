@@ -18,8 +18,27 @@
       href="./../node_modules/toastr/build/toastr.min.css"
       rel="stylesheet"
     />
+
+    <script>
+      (function () {
+        const htmlEl = document.querySelector('html');
+        const data = localStorage.getItem('site-theme');
+
+        if (!data) {
+          htmlEl.classList.add('light');
+          return;
+        }
+
+        try {
+          const theme = JSON.parse(data);
+          htmlEl.classList.add(theme);
+        } catch (error) {
+          console.log(error);
+        }
+      })();
+    </script>
   </head>
-  <body>
+  <body class="is-logged">
     <include src="./partials/common/header.html"></include>
 
     <main>
@@ -55,6 +74,6 @@
       </section>
     </main>
 
-    <script type="module" src="./index.js"></script>
+    <script type="module" src="./shoppingList.js"></script>
   </body>
 </html>

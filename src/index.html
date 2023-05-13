@@ -18,13 +18,35 @@
       href="./../node_modules/toastr/build/toastr.min.css"
       rel="stylesheet"
     />
+
+    <script>
+      (function () {
+        const htmlEl = document.querySelector('html');
+        const data = localStorage.getItem('site-theme');
+
+        if (!data) {
+          htmlEl.classList.add('light');
+          return;
+        }
+
+        try {
+          const theme = JSON.parse(data);
+          htmlEl.classList.add(theme);
+        } catch (error) {
+          console.log(error);
+        }
+      })();
+    </script>
   </head>
   <body>
     <include src="./partials/common/header.html"></include>
-    <a href="./shopping-list.html">shopping-list</a>
 
     <main class="main">
       <h1 class="visually-hidden">Application for finding books</h1>
+
+      <!-- <include src="./partials/common/sign-up-form.html"></include>
+
+      <include src="./partials/common/sign-in-form.html"></include> -->
 
       <div class="container main__container">
         <section class="categories-section categories-root">
@@ -45,16 +67,26 @@
       </div>
     </main>
 
+    <div class="backdrop-form backdrop-form--is-hidden" data-form-modal>
+      <div class="modal-form">
+        <include src="./partials/common/sign-up-form.html"></include>
+
+        <include src="./partials/common/sign-in-form.html"></include>
+      </div>
+    </div>
+
     <!-- <include src="./partials/common/single-book-popup.html"></include> -->
 
     <!-- <include src="./partials/testing/auth-component.html"></include>
     <include src="./partials/testing/sign-up-form.html"></include>
     <include src="./partials/testing/sign-in-form.html"></include>
     <include src="./partials/testing/test-state-manipulator.html"></include> -->
+
     <include src="./partials/markup-to-render/single-category.html"></include>
     <div class="book-backdrop hidden">
       <include src="./partials/common/single-book-popup.html"></include>
     </div>
-    <script type="module" src="./index.js"></script>
+    <div class="test-div"></div>
+    <script type="module" src="./home.js"></script>
   </body>
 </html>
