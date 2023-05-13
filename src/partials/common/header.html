@@ -34,7 +34,7 @@
       <span class="switcher-theme__status"></span>
     </label>
 
-    <div class="page-header__user-container">
+    <div class="page-header__user-container auth-component">
       <button class="user js-user" type="button">
         <div class="user__box">
           <svg
@@ -48,7 +48,7 @@
           </svg>
         </div>
 
-        <p class="user__name">User name</p>
+        <p class="user__name auth-component__user-name">User name</p>
 
         <svg class="user__icon" width="23" height="26">
           <use href="./images/icons.svg#icon-triangle-down"></use>
@@ -137,7 +137,12 @@
       </ul>
     </nav>
 
-    <button class="header-btn log-out-btn" type="button">Log out</button>
+    <button
+      class="header-btn log-out-btn auth-component__sign-out-button"
+      type="button"
+    >
+      Log out
+    </button>
 
     <button class="header-btn sign-up-btn js-open-form-modal" type="button">
       Sign up

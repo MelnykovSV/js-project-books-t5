@@ -37,5 +37,5 @@ export const INITIAL_STATE_VALUE = {
       title: 'DAISY JONES & THE SIX',
     },
   ],
-  theme: 'light',
+  // theme: 'light',
 };

@@ -7,7 +7,16 @@ const passInput = document.querySelector('#sign-up-password');
 const passBar = document.querySelector('.password-bar');
 const passBarContainer = document.querySelector('.password-bar-container');
 const passMessage = document.querySelector('.password-message');
+
 addValidation();
+
+document.body.addEventListener('click', e => {
+  if (e.target.classList.contains('user-form__close-button')) {
+    document
+      .querySelector('.backdrop-form')
+      .classList.add('backdrop-form--is-hidden');
+  }
+});
 
 signUpForm.addEventListener('click', e => {
   if (
