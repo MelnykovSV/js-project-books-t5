@@ -21,7 +21,7 @@ function onCloseMenu() {
   document.body.classList.remove('body-lock');
 }
 
-window.matchMedia('(min-width: 1024px)').addEventListener('change', e => {
+window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
   if (!e.matches) {
     return;
   }
