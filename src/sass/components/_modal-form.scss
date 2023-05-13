@@ -1,5 +1,5 @@
 .backdrop-form {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
@@ -43,7 +43,8 @@
   top: 50%;
   left: 50%;
 
-  width: 579px;
+  max-width: 579px;
+  width: 100%;
 
   transform: translate(-50%, -50%) scale(1);
   transition: transform var(--time) var(--cubic);
