@@ -1,4 +1,5 @@
-<li class="card">
+<!-- Markup -->
+<li class="card js-card" data-card-id="${idx}">
   <div class="card__img-thumb">
     <img
       class="card__img"
@@ -6,7 +7,14 @@
       alt="Book cover"
     />
   </div>
-
+  <div
+    tabindex="0"
+    type="button"
+    class="card__delete-btn js-remove-btn"
+    data-remove-btn-id="${idx}"
+  >
+    <img class="delete-btn__icon" src="${icons.dump}" alt="Delete icon" />
+  </div>
   <div class="card__descr">
     <h2 class="card__title">I will find you</h2>
     <p class="card__subtitle">Hardcover fiction</p>
@@ -30,11 +38,8 @@
           >
             <img
               class="shop__icon"
-              srcset="
-                ./images/shopping-list/icons/amazon.png    1x,
-                ./images/shopping-list/icons/amazon@2x.png 2x
-              "
-              src="./images/shopping-list/icons/amazon.png"
+              srcset="${icons.amazon} 1x, ${icons.amazon2x} 2x"
+              src="${icons.amazon}"
               alt="Shop icon"
           /></a>
         </li>
@@ -47,11 +52,8 @@
           >
             <img
               class="shop__icon"
-              srcset="
-                ./images/shopping-list/icons/apple-book.png    1x,
-                ./images/shopping-list/icons/apple-book@2x.png 2x
-              "
-              src="./images/shopping-list/icons/apple-book.png"
+              srcset="${icons.appleBook} 1x, ${icons.appleBook2x} 2x"
+              src="${icons.appleBook}"
               alt="Shop icon"
             />
           </a>
@@ -65,11 +67,8 @@
           >
             <img
               class="shop__icon"
-              srcset="
-                ./images/shopping-list/icons/bookshop.png    1x,
-                ./images/shopping-list/icons/bookshop@2x.png 2x
-              "
-              src="./images/shopping-list/icons/bookshop.png"
+              srcset="${icons.bookshop} 1x, ${icons.bookshop2x} 2x"
+              src="${icons.bookshop}"
               alt="Shop icon"
             />
           </a>
@@ -77,11 +76,74 @@
       </ul>
     </div>
   </div>
-  <div type="button" class="card__delete-btn">
-    <img
-      class="delete-btn__icon"
-      src="../src/images/shopping-list/dump.svg"
-      alt="Delete icon"
-    />
+</li>
+
+<!-- Markup with variables -->
+
+<li class="card js-card" data-card-id="${_id}">
+  <div class="card__img-thumb">
+    <img class="card__img" src="${book_image}" alt="Book cover" />
+  </div>
+  <div
+    type="button"
+    class="card__delete-btn js-remove-btn"
+    data-remove-btn-id="${idx}"
+  >
+    <img class="delete-btn__icon" src="${icons.dump}" alt="Delete icon" />
+  </div>
+  <div class="card__descr">
+    <h2 class="card__title">${title}</h2>
+    <p class="card__subtitle">${list_name}</p>
+    <p class="card__text">${descriprion}</p>
+
+    <div class="author">
+      <p class="author__name">${author}</p>
+
+      <ul class="shops list">
+        <li class="shop__item shop__item--amazon">
+          <a
+            class="shop__link link"
+            href="${buy_links[0].url}"
+            aria-label="Amazon"
+          >
+            <img
+              class="shop__icon"
+              srcset="${icons.amazon} 1x, ${icons.amazon2x} 2x"
+              src="${icons.amazon}"
+              alt="Shop icon"
+          /></a>
+        </li>
+
+        <li class="shop__item shop__item--book">
+          <a
+            class="shop__link link"
+            href="${buy_links[1].url}"
+            aria-label="Apple books"
+          >
+            <img
+              class="shop__icon"
+              srcset="${icons.appleBook} 1x, ${icons.appleBook2x} 2x"
+              src="${icons.appleBook}"
+              alt="Shop icon"
+            />
+          </a>
+        </li>
+
+        <li class="shop__item shop__item--bookshop">
+          <a
+            class="shop__link link"
+            href="${buy_links[4].url}"
+            aria-label="Bookshop"
+          >
+            <img
+              class="shop__icon"
+              srcset="${icons.bookshop} 1x, ${icons.bookshop2x} 2x"
+              src="${icons.bookshop}"
+              alt="Shop icon"
+            />
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </li>

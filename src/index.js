@@ -1,5 +1,7 @@
 // import './js/testing/authTest';
-import './js/components/switcher/switcher';
+import './js/components/header/index';
 // import './js/best-sellers/topBooks';
-import './js/components/best-sellers/topBooks';
-import './js/components/pagination/pagination';
+// import './js/components/best-sellers/topBooks';
+import './js/components/shopping-list/pagination';
+// import './js/components/single-book-popup/single-book-popup';
+import './js/components/shopping-list/shopping-list';

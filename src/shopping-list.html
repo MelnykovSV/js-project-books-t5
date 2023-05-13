@@ -20,10 +20,6 @@
     />
   </head>
   <body>
-    <a href="./index.html">Test link on home page</a>
-
-    <include src="./partials/testing/switcher.html"></include>
-
     <include src="./partials/common/header.html"></include>
 
     <main>
@@ -41,11 +37,11 @@
 
             <div class="shopping-list__box">
               <!-- Cards list -->
-              <ul class="shopping-list__cards list">
+              <ul class="shopping-list__cards list js-shopping-list">
                 <!-- Card -->
               </ul>
               <!-- Plug -->
-              <div class="plug">
+              <div class="plug js-plug">
                 <p class="plug__text">
                   This page is empty, add some books and proceed to order.
                 </p>
@@ -60,5 +56,6 @@
     </main>
 
     <script type="module" src="./index.js"></script>
+    <!-- <script src="./js/simplePagination/jquery.simplePagination.js"></script> -->
   </body>
 </html>

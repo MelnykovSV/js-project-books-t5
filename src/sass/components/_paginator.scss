@@ -51,6 +51,9 @@
   background-color: transparent;
   border: 1px solid #000000;
 
+  transition: color var(--time) var(--cubic),
+    background-color var(--time) var(--cubic);
+
   &--active {
     color: var(--secondary-color);
     background-color: var(--primary-color);
@@ -92,9 +95,12 @@
   color: #000000;
   background-color: var(--secondary-akzent);
 
-  &:disabled{
+  transform: color var(--time) var(--cubic) background-color var(--time)
+    var(--cubic);
+
+  &:disabled {
     color: var(--text-secondary-light);
-  background-color: #111111;
+    background-color: #111111;
   }
 }
 
