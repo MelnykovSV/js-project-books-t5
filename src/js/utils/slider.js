@@ -12,12 +12,9 @@ const swiper = new Swiper('.swiper', {
   },
   direction: 'vertical',
   loop: true,
-    slidesPerView: 3,
-  768: {
-      slidesPerView: 6,
-      spaceBetween: 30
-    },
+  slidesPerView: 4,
   navigation: {
     nextEl: '.swiper-button'
-  }
+  },
+
 });
