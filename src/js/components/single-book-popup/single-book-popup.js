@@ -32,6 +32,7 @@ const bookPopUpCard = document.querySelector('.book-pop-up__card');
 
 closeButton.addEventListener('click', () => {
   backdrop.classList.add('hidden');
+  document.body.style.overflow = '';
 });
 
 function closeModal(e) {
@@ -40,6 +41,7 @@ function closeModal(e) {
     backdrop.removeEventListener('click', closeModal);
     console.log('1234');
     backdrop.classList.add('hidden');
+    document.body.style.overflow = '';
   }
 }
 
@@ -50,8 +52,8 @@ export async function showSingleBookPopUp(e) {
     bookPopUpCard.innerHTML = markup;
     document.addEventListener('keydown', closeModal);
     backdrop.addEventListener('click', closeModal);
-
     backdrop.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
   }
 }
 
