@@ -7,17 +7,17 @@ const swiper = new Swiper('.swiper', {
   effect: 'creative',
   creativeEffect: {
     next: {
-      translate: ['100%', 0, 0]
-    }
+      translate: ['100%', 0, 0],
+    },
   },
   direction: 'vertical',
   loop: true,
-    slidesPerView: 3,
+  slidesPerView: 3,
   768: {
-      slidesPerView: 6,
-      spaceBetween: 30
-    },
+    slidesPerView: 6,
+    spaceBetween: 30,
+  },
   navigation: {
-    nextEl: '.swiper-button'
-  }
+    nextEl: '.swiper-button',
+  },
 });
