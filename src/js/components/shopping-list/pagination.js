@@ -1,138 +1,81 @@
-// import $ from '../../../../node_modules/jquery';
-// import simplePagination from '../../simplePagination/jquery.simplePagination';
-import { refs } from './refs';
-import { createMarkup } from './createMarkup';
+import globalState from '../../globalState';
+import Pagination from 'tui-pagination';
+import { renderCurrentBookCards } from './cart';
 
-export const data = [
-  { a: 1 },
-  { a: 2 },
-  { a: 3 },
-  { a: 4 },
-  { a: 5 },
-  { a: 6 },
-  { a: 7 },
-  { a: 8 },
-  { a: 9 },
-  { a: 10 },
-  { a: 11 },
-];
+let totalBookCards = globalState.shoppingList().length;
+// eslint-disable-next-line no-unused-vars
+let currentPage = 1;
+const options = {
+  usageStatistics: false,
+  totalItems: totalBookCards,
+  itemsPerPage: 3,
+  visiblePages: 3,
+  page: currentPage,
+  centerAlign: false,
+  firstItemClassName: 'tui-first-child',
+  lastItemClassName: 'tui-last-child',
+  template: {
+    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+    currentPage:
+      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+    moveButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</a>',
+    disabledMoveButton:
+      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</span>',
+    moreButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+      '<span class="tui-ico-ellip">...</span>' +
+      '</a>',
+  },
+};
 
-class Pagination {
-  constructor(itemsPerPage = 5) {
-    this.itemsPerPage = itemsPerPage;
+const container = document.querySelector('.paginator-container');
+document.body.addEventListener('click', e => {
+  if (e.target.classList.contains('js-shopping-list-delete-button')) {
+    globalState.setShoppingList(
+      globalState.shoppingList().filter(item => {
+        return item._id !== e.target.dataset.cardId;
+      })
+    );
+    options.totalItems = globalState.shoppingList().length;
+    options.page = currentPage;
+    instance = new Pagination(container, options);
+
+    instance.on('beforeMove', e => {
+      const currentBookCardsArray = findCurrentBookCards(e.page);
+      renderCurrentBookCards(currentBookCardsArray);
+      currentPage = e.page;
+      console.log(currentPage);
+    });
+
+    renderCurrentBookCards(findCurrentBookCards(currentPage));
+    console.log(currentPage);
+    console.log(globalState.shoppingList());
   }
+});
 
-  page = 1;
+let instance = new Pagination(container, options);
 
-  set(newPage) {
-    this.page = newPage;
-  }
+instance.on('beforeMove', e => {
+  const currentBookCardsArray = findCurrentBookCards(e.page);
+  renderCurrentBookCards(currentBookCardsArray);
+  currentPage = e.page;
+  console.log(currentPage);
+});
+
+export function findCurrentBookCards(num) {
+  const currentBookCardsArray = globalState
+    .shoppingList()
+    .filter((item, index) => {
+      return index >= num && index <= num + 3;
+    });
+
+  console.log(currentBookCardsArray);
+  return currentBookCardsArray;
 }
 
-const pagination = new Pagination(4);
-
-let startIndex = 0;
-let activePageBtn = document.querySelector('.pagination__btn--active');
-
-renderShoppingListPage();
-refs.pagination.classList.remove('is-hidden'); // Убрать после проверок
-
-refs.pagination.addEventListener('click', onPaginationBtnClick);
-
-function hidePlugAndPagination() {
-  if (data.length) {
-    refs.plug.classList.add('is-hidden');
-  } else {
-    refs.plug.classList.remove('is-hidden');
-  }
-
-  if (data.length > 4) {
-    refs.pagination.classList.remove('is-hidden');
-  } else {
-    refs.pagination.classList.add('is-hidden');
-  }
-}
-
-function onPaginationBtnClick(e) {
-  const btn = e.target.closest('button');
-
-  const isFirstPage = pagination.page === 1;
-  const isLastPage = pagination.page === data.length / pagination.itemsPerPage;
-
-  console.log(isFirstPage);
-  console.log(isLastPage);
-
-  if (isFirstPage) {
-    refs.firstArrow.disabled = true;
-    refs.prevArrow.disabled = true;
-  } else {
-    refs.firstArrow.disabled = false;
-    refs.prevArrow.disabled = false;
-  }
-
-  if (isLastPage) {
-    refs.nextArrow.disabled = true;
-    refs.lastArrow.disabled = true;
-  } else {
-    refs.nextArrow.disabled = false;
-    refs.lastArrow.disabled = false;
-  }
-
-  switch (btn.value) {
-    case 'first':
-      pagination.page = 1;
-      console.log(pagination.page);
-      break;
-    case 'prev':
-      pagination.page -= 1;
-      console.log(pagination.page);
-
-      break;
-    case 'next':
-      pagination.page += 1;
-      console.log(pagination.page);
-
-      break;
-    case 'last':
-      pagination.page = Math.ceil(data.length / pagination.itemsPerPage);
-      console.log(pagination.page);
-
-      break;
-
-    default:
-      pagination.page = 1;
-  }
-
-  pagination.page = Number(btn.value);
-  startIndex =
-    pagination.itemsPerPage * pagination.page - pagination.itemsPerPage;
-
-  if (activePageBtn) {
-    activePageBtn.classList.remove('pagination__btn--active');
-  }
-
-  if (btn.classList.contains('pagination__btn-page')) {
-    btn.classList.add('pagination__btn--active');
-  }
-
-  activePageBtn = btn;
-
-  renderShoppingListPage();
-}
-
-function renderShoppingListPage() {
-  if (!data.length) {
-    return;
-  }
-
-  const itemsToRender = data.slice(
-    startIndex,
-    pagination.itemsPerPage * pagination.page
-  );
-
-  const markup = createMarkup(itemsToRender);
-
-  hidePlugAndPagination();
-
-  refs.shoppingList.innerHTML = markup;
-}
+renderCurrentBookCards(findCurrentBookCards(1));
