@@ -4,9 +4,6 @@
 import { createMarkupOfCategoryList } from './markupCategotyList';
 import { fetchCategoryList } from '../../api';
 
-import ResizeObserver from 'resize-observer-polyfill';
-window.ResizeObserver = ResizeObserver;
-
 const categoryList = document.querySelector('.categories-links-list');
 
 async function getCategoryList() {
