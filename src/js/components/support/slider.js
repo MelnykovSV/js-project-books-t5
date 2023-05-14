@@ -1,4 +1,10 @@
 import Swiper, { Navigation } from 'swiper';
+import { renderFoundsList } from './foundsList';
+import { founds } from './founds';
+
+const foundsSliderEl = document.querySelector('.js-founds-slider');
+
+foundsSliderEl.innerHTML = renderFoundsList(founds);
 
 new Swiper('.swiper', {
   direction: 'vertical',
