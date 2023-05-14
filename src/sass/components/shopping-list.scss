@@ -94,6 +94,12 @@
   }
 }
 
+.delete-btn__icon {
+  stroke: black;
+  // fill: black;
+  pointer-events: none;
+}
+
 .plug__img {
   display: block;
   max-width: 265px;
