@@ -1,0 +1,25 @@
+<button class="scroll-btn" onclick="scrollToTop()"><svg class="scroll-btn__svg" width="24px" height="24px"
+        aria-label="скролл">
+        <use class="scroll-btn__img" href="/src/images/icons.svg#icon-back-button-angle"></use>
+    </svg></button>
+
+
+
+    <script>
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            var scrollButton = document.querySelector('.scroll-btn');
+
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                scrollButton.style.bottom = '20px'; 
+            } else {
+                scrollButton.style.bottom = '-100px'; 
+            }
+        }
+
+        function scrollToTop() {
+            document.body.scrollTop = 0; 
+            document.documentElement.scrollTop = 0; 
+        }
+    </script>
