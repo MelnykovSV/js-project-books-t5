@@ -6,14 +6,20 @@ const bookCardsArray = globalState.shoppingList();
 
 export function renderCurrentBookCards(bookCardsArray) {
   const container = document.querySelector('.js-shopping-list');
+  console.log(bookCardsArray);
 
-  const listMarkup = bookCardsArray
-    .map(item => {
-      return createMarkup(item);
-    })
-    .join('');
+  if (bookCardsArray.length) {
+    const listMarkup = bookCardsArray
+      .map(item => {
+        return createMarkup(item);
+      })
+      .join('');
 
-  container.innerHTML = listMarkup;
+    container.innerHTML = listMarkup;
+  } else {
+    container.innerHTML =
+      '<div class="plug"><p class="plug__text">This page is empty, add some books and proceed to order.</p><div class="plug__img"></div></div>';
+  }
 }
 
 // renderCurrentBookCards(bookCardsArray);
