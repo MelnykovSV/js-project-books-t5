@@ -1,1 +1,0 @@
-{"mappings":"oeAAAA,EAAA,S","sources":["src/shoppingList.js"],"sourcesContent":["import './js/components/header/index';\n// import './js/firebase/auth';\nimport './js/components/support/index';\n"],"names":["parcelRequire"],"version":3,"file":"shopping-list.9f8c29d2.js.map"}
