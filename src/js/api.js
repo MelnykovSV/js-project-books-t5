@@ -12,6 +12,12 @@ export async function fetchTopBooks() {
 export async function fetchSingleBook(id) {
   return await instance.get(`/books/${id}`);
 }
+
 export async function fetchCategoryList() {
   return await instance.get('books/category-list');
+}
+
+export async function fetchCategoryBook(category) {
+  const params = { category };
+  return await instance.get('/books/category', { params });
 }
