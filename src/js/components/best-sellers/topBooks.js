@@ -21,17 +21,15 @@ function bestSellersClickHandler(event) {
     const currentCategory =
       event.target.closest('.top-books__item').children[0];
     const categoryName = currentCategory.textContent;
-    console.log(categoryName);
+    // console.log(categoryName);
+    renderBooksCategory(categoryName);
   }
-  const currentBook = event.target.closest('.books__item');
-  const bookID = currentBook.dataset.id;
-  console.log(bookID);
 }
 
-function renderBooksCategory(event) {
-  const currentCategory = event.target.closest('.top-books__item').children[0];
-  const categoryName = currentCategory.textContent;
-  console.log(categoryName);
+function renderBooksCategory(categoryName) {
+  // const currentCategory = event.target.closest('.top-books__item').children[0];
+  // const categoryName = currentCategory.textContent;
+  // console.log(categoryName);
 
   const fetchBooks = async () => {
     try {
