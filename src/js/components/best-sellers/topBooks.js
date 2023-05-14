@@ -1,4 +1,7 @@
 import { fetchCategoryBook, fetchTopBooks } from '../../api';
+
+import { getBooksByCategory } from '../category-book-Vlada/category';
+
 import { createMarkupAllBooks } from './markupTopBooks';
 
 const categoriesRoot = document.querySelector('.categories-root');
@@ -21,24 +24,24 @@ function bestSellersClickHandler(event) {
     const currentCategory =
       event.target.closest('.top-books__item').children[0];
     const categoryName = currentCategory.textContent;
-    // console.log(categoryName);
-    renderBooksCategory(categoryName);
+    getBooksByCategory(categoryName);
+    // renderBooksCategory(categoryName);
   }
 }
 
-function renderBooksCategory(categoryName) {
-  // const currentCategory = event.target.closest('.top-books__item').children[0];
-  // const categoryName = currentCategory.textContent;
-  // console.log(categoryName);
+// function renderBooksCategory(categoryName) {
+//   // const currentCategory = event.target.closest('.top-books__item').children[0];
+//   // const categoryName = currentCategory.textContent;
+//   // console.log(categoryName);
 
-  const fetchBooks = async () => {
-    try {
-      const books = await fetchCategoryBook(categoryName);
-      console.log(books);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+//   const fetchBooks = async () => {
+//     try {
+//       const books = await fetchCategoryBook(categoryName);
+//       console.log(books);
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   };
 
-  fetchBooks();
-}
+//   fetchBooks();
+// }
