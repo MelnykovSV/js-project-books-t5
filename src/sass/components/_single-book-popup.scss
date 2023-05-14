@@ -1,78 +1,62 @@
 .book-backdrop {
   position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2);
-  z-index: 10;
   left: 0;
   top: 0;
+
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: rgba(17, 17, 17, 0.4);
+  z-index: 10;
+
   opacity: 1;
+  transition: opacity var(--time) var(--cubic);
   padding-left: 20px;
   padding-right: 20px;
   pointer-events: all;
+
+  @media screen and (min-width: $tablet) {
+    padding-left: 95px;
+    padding-right: 95px;
+  }
+
   &.hidden {
     opacity: 0;
     pointer-events: none;
   }
 }
 
-// .backdrop {
-//   // position: fixed;
-//   // top: 0;
-//   // left: 0;
-
-//   max-width: $mobile;
-//   margin: 0 auto;
-//   // height: 100%;
-//   height: 800px;
-//   padding-left: 20px;
-//   padding-right: 20px;
-//   overflow-y: auto;
-
-//   background-color: rgba(0, 0, 0, 0.2);
-//   // border: 1px solid $logo-color;
-//   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-//   opacity: 1;
-
-//   @media screen and (min-width: $tablet) {
-//     max-width: $tablet;
-//     padding-left: 95px;
-//     padding-right: 95px;
-//   }
-//   // transition: opacity 250ms $transition-values;
-
-//   // &.is-hidden {
-//   //  opacity: 0;
-//   //  pointer-events: none;
-//   // }
-
-//   // &.is-hidden .modal {
-//   //  transform: translate(-50%, -50%) scale(0.8);
-//   // }
-// }
 
 .book-modal {
   position: absolute;
-  top: 50%;
+  top: 400px;
   left: 50%;
   transform: translate(-50%, -50%);
+
   padding: 40px 24px;
   max-width: 335px;
+  // height: 100%;
+  height: auto;
+  overflow-y: auto;
 
-  // width: calc(100% - 30px);
-  // overflow-y: auto;
   background-color: var(--secondary-bg);
-  // background-color: white;
-  border: 1px solid var(--logo-color);
-  // border: 1px solid black;
-  border-radius: 5px;
+  border: 2px solid var(--primary-color);
+  border-radius: 18px;
+
   @media screen and (min-width: $tablet) {
-    max-width: 579px;
+    top: 275px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 579px;
+    padding: 40px;
   }
+
 }
-.book__card {
+
+.book-pop-up__card {
   @media screen and (min-width: $tablet) {
     display: flex;
+    gap: 24px;
   }
 }
 
@@ -82,10 +66,12 @@
     flex-direction: column;
   }
 }
+
 .modal__close {
   position: absolute;
   right: 12px;
   top: 12px;
+
   cursor: pointer;
   background-color: var(--secondary-bg);
   border: none;
@@ -94,70 +80,125 @@
 
 .modal__close-icon {
   stroke: var(--primary-color);
+  fill: var(--primary-color);
+  transition: stroke var(--time) var(--cubic), fill var(--time) var(--cubic);
+
+  &:hover,
+  &:focus {
+    fill: var(--list-category-accent-text);
+    stroke: var(--list-category-accent-text);
+  }
 }
 
 .thumb {
   width: 287px;
-  height: 387px;
+  border-radius: 8px;
+  overflow: hidden;
   margin-bottom: 14px;
-  outline: 1px solid green;
+  // outline: 1px solid green;
+
+  @media screen and (min-width: $tablet) {
+    width: 192px;
+    margin-bottom: 40px;
+  }
 }
 
 .image {
   width: 100%;
+  object-fit: cover;
 }
 
 .book__name {
   margin-bottom: 4px;
+  color: var(--primary-color);
+
   font-weight: 700;
   font-size: 16px;
   line-height: 1.125;
-  /* identical to box height, or 112% */
-
   letter-spacing: -0.04em;
-  // color: var(--primary-color);
-  color: #111111;
+
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 8px;
+  }
+
 }
 
 .book__author {
   font-style: italic;
-  font-weight: 400;
   font-size: 12px;
   line-height: 14px;
   letter-spacing: -0.04em;
 
   color: #b4afaf;
   margin-bottom: 18px;
+
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 20px;
+  }
 }
 
 .book__description {
   line-height: 1.29;
   letter-spacing: -0.04em;
 
-  color: #111111;
+  color: var(--primary-color);
+
+  @media screen and (min-width: $tablet) {
+    margin-bottom: 20px;
+    max-width: 280px;
+  }
 }
 
 .book__sales--link-list {
   list-style: none;
   display: flex;
+  align-items: center;
   gap: 20px;
   padding: 0;
+  padding-bottom: 40px;
 }
 
-.book__add-remove {
+.book__sales-icon {
+  mix-blend-mode: luminosity;
+
+  &:hover {
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.15));
+  }
+
+  html.dark &.amazon {
+    filter: invert(1);
+  }
+}
+
+
+.book__add-remove-link {
+  text-decoration: none;
+}
+
+.book__add-remove-btn {
   font-weight: 700;
   line-height: 1.286;
   letter-spacing: -0.01em;
   text-transform: uppercase;
 
-  color: #111111;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
   padding: 14px 28px;
-  border: 2px solid #4f2ee8;
+  border: 2px solid var(--list-category-accent-text);
   border-radius: 40px;
 
-  margin: auto;
   display: flex;
-  margin-bottom: 4px;
+  margin: auto;
+  margin-bottom: 8px;
+  transition: color var(--time) var(--cubic), background-color var(--time) var(--cubic);
+
+
+  &:hover,
+  &:focus {
+    color: var(--secondary-color);
+    background-color: var(--list-category-accent-text);
+    cursor: pointer;
+  }
 }
 
 .greetings {
@@ -169,22 +210,3 @@
   max-width: 240px;
   margin: auto;
 }
-
-// .light {
-//  --primary-bg: #f6f6f6;
-//  --secondary-bg: #ffffff;
-
-//  --primary-color: #111111;
-//  --secondary-color: #ffffff;
-
-//  --logo-color: #000000;
-
-//  --list-category-accent-text: #4f2ee8;
-//  --list-category-text: rgba(17, 17, 17, 0.6);
-
-//  --scroll: #e0e0e0;
-
-//  --shopping-list-text: rgba(0, 0, 0, 0.6);
-
-//  --pop-up-info-text: rgba(17, 17, 17, 0.5);
-// }
