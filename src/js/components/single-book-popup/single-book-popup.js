@@ -77,26 +77,26 @@ function createPopUpMarkup({
         }
         </p>
       </div>
-      <ul class="book__sales--link-list js-sales">
-        <li class="book__sales--link">
+      <ul class="book__sales--link-list">
+        <li>
           <a href="${
             buy_links[0].url
-          }" target="_blank" rel="noopener noreferrer nofollow">
-            <img srcset="${imageAmazon} 1x, ${imageAmazon2x} 2x" src="${imageAmazon}" alt="Amazon" />
+          }" aria-label="Amazon" target="_blank" rel="noopener noreferrer nofollow">
+            <img class = "book__sales-icon amazon" width="62" height="19" srcset="${imageAmazon} 1x, ${imageAmazon2x} 2x" src="${imageAmazon}" alt="Amazon" />
           </a>
         </li>
-        <li class="book__sales--link">
+        <li>
           <a href="${
             buy_links[1].url
-          }" target="_blank" rel="noopener noreferrer nofollow">
-            <img srcset="${imageAppleBook} 1x, ${imageAppleBook2x} 2x" src="${imageAppleBook}" alt="Apple Books" />
+          }" aria-label="Apple books" target="_blank" rel="noopener noreferrer nofollow">
+            <img class = "book__sales-icon" width="33" height="32" srcset="${imageAppleBook} 1x, ${imageAppleBook2x} 2x" src="${imageAppleBook}" alt="Apple Books" />
           </a>
         </li>
-        <li class="book__sales--link">
+        <li>
           <a href="${
             buy_links[4].url
-          }" target="_blank" rel="noopener noreferrer nofollow">
-            <img srcset="${imageBookShop} 1x, ${imageBookShop2x} 2x" src="${imageBookShop}" alt="Bookshop" />
+          }" aria-label="Bookshop" target="_blank" rel="noopener noreferrer nofollow">
+            <img class = "book__sales-icon" width="38" height="36" srcset="${imageBookShop} 1x, ${imageBookShop2x} 2x" src="${imageBookShop}" alt="Bookshop" />
           </a>
         </li>
       </ul>
