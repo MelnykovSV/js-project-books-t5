@@ -21,3 +21,7 @@ export async function fetchCategoryBook(category) {
   const params = { category };
   return await instance.get('/books/category', { params });
 }
+//Vlada//
+export async function fetchBooksByCategory(category) {
+  return await instance.get(`/books/category?category=${category}`);
+}

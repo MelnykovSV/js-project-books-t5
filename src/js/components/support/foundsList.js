@@ -21,5 +21,5 @@ export function renderFoundsList(founds) {
   <div class="swiper-wrapper founds-list">
       ${founds.length < 12 ? markup + markup : markup}
     </div>
-    `;
+  `;
 }
