@@ -78,6 +78,12 @@
   font-size: 14px;
   line-height: 18px;
   color: var(--default-primary-color);
+
+  user-select: none;
+}
+
+.founds-list__link:hover {
+  color: var(--default-primary-color);
 }
 
 .founds-list__icon {
