@@ -10,7 +10,7 @@ export function createMarkupAllBooks(data) {
       <ul class="books list">
         ${createMarkupBook(books)}
         </ul>
-        <button class="top-books__button" type="button">See more</button>
+        <button data-category-name="${list_name}" class="top-books__button" type="button">See more</button>
         </li>
         `;
             })

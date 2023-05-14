@@ -7,3 +7,9 @@ const instance = axios.create({
 export async function fetchTopBooks() {
   return await instance.get('/books/top-books');
 }
+
+
+export async function fetchCategoryBook(category) {
+  const params = {category};
+  return await instance.get('/books/category', {params});
+}

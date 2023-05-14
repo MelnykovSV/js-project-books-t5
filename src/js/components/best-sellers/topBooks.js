@@ -1,4 +1,4 @@
-import { fetchTopBooks } from '../../api';
+import { fetchCategoryBook, fetchTopBooks } from '../../api';
 import { createMarkupAllBooks } from './markupTopBooks';
 
 const categoriesRoot = document.querySelector('.categories-root');
@@ -32,4 +32,17 @@ function renderBooksCategory(event) {
   const currentCategory = event.target.closest('.top-books__item').children[0];
   const categoryName = currentCategory.textContent;
   console.log(categoryName);
+
+
+  const fetchBooks = async() => {
+    try{
+      const books = await fetchCategoryBook(categoryName);
+      console.log(books);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  fetchBooks();
+
 }
