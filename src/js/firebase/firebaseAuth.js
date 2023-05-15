@@ -16,6 +16,7 @@ import { INITIAL_STATE_VALUE } from '../../constants';
 import { notification } from '../utils/notifications';
 
 import { app } from './firebaseApp';
+import { initialShoppingList } from '../components/shopping-list/pagination';
 
 //create user
 
@@ -112,6 +113,9 @@ class FirebaseAuth {
         databaseUtils.getUserData().then(data => {
           if (data) {
             globalState.set(data);
+
+            localStorage.setItem('userData', JSON.stringify(data));
+            initialShoppingList();
           } else {
             globalState.set(INITIAL_STATE_VALUE);
           }
@@ -123,6 +127,7 @@ class FirebaseAuth {
         document.body.classList.add('is-logged');
       } else {
         // User is signed out
+        localStorage.removeItem('userData');
         if (localStorage.getItem('globalState')) {
           globalState.set(JSON.parse(localStorage.getItem('globalState')));
         } else {
