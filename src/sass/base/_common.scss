@@ -74,7 +74,7 @@ body {
   @media screen and (min-width: $desktop) {
     flex-direction: column;
     gap: 86px;
-    width: 356px;
+    min-width: 356px;
   }
 
   &--is-hide {

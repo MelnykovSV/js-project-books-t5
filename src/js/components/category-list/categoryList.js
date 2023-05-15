@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable linebreak-style */
 import { getBooksByCategory } from '../category-book-Vlada/category';
+import { getAllTopBooks } from '../best-sellers/topBooks';
 
 import { createMarkupOfCategoryList } from './markupCategotyList';
 import { fetchCategoryList } from '../../api';
@@ -20,8 +21,22 @@ getCategoryList();
 categoryList.addEventListener('click', handlerCategoryBooks);
 
 function handlerCategoryBooks(event) {
-  if (event.target.closest('.categories-links-list__item')) {
-    const currentCategory = event.target.closest('.category-link');
+  if (event.target.classList.contains('js-all-category')) {
+    const activeLinkEl = categoryList.querySelector('.active-link');
+    activeLinkEl.classList.remove('active-link');
+
+    event.target.classList.add('active-link');
+
+    getAllTopBooks();
+    return;
+  }
+
+  if (event.target.classList.contains('category-link')) {
+    const activeLinkEl = categoryList.querySelector('.active-link');
+    activeLinkEl.classList.remove('active-link');
+
+    event.target.classList.add('active-link');
+    const currentCategory = event.target;
     const currentCategoryName = currentCategory.textContent;
     getBooksByCategory(currentCategoryName);
   }

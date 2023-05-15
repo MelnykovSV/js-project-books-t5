@@ -67,7 +67,7 @@ a {
 }
 .category-link {
   color: var(--list-category-text);
-  transition: color 300ms linear;
+  transition: color var(--time) var(--cubic);
   &:hover,
   &:focus {
     color: var(--list-category-accent-text);

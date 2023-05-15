@@ -46,7 +46,10 @@ function closeModal(e) {
 }
 
 export async function showSingleBookPopUp(e) {
-  if (e.target.classList.contains('books__item')) {
+  if (
+    e.target.classList.contains('books__item') ||
+    e.target.classList.contains('category__item')
+  ) {
     const { data } = await fetchSingleBook(e.target.dataset.id);
     const markup = createPopUpMarkup(data);
     bookPopUpCard.innerHTML = markup;
