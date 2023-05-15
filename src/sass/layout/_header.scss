@@ -344,12 +344,16 @@ html.dark .switcher-theme__status {
   color: var(--default-primary-color);
   border-radius: 36px;
 
-  @media screen and (min-width: $tablet) {
-    color: var(--primary-color);
-  }
-
   &:hover {
     color: var(--default-primary-color);
+  }
+
+  @media screen and (min-width: $tablet) {
+    color: var(--primary-color);
+
+    &:hover {
+      color: var(--primary-color);
+    }
   }
 
   &--current {
