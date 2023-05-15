@@ -1,43 +1,83 @@
-.pagination,
-.pagination__arrows,
-.pagination__pages,
-.pagination__btn {
+.paginator-container {
+  display: none;
+  @media screen and (min-width: $mobile) {
+    display: flex;
+  }
+}
+
+.pagination {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.pagination {
-  gap: 14px;
+.pagination__pages:not(:last-child) {
+  margin-right: 8px;
 
-  &.is-hidden {
-    display: none;
-  }
-
-  @media screen and (min-width: $tablet) {
-    gap: 24px;
+  @media screen and (min-width: $desktop) {
+    margin-right: 10px;
   }
 }
 
-.pagination__pages {
-  gap: 8px;
+.pagination__pages.tui-last-child {
+  margin-right: 0;
+}
+
+.tui-first-child {
+  margin-right: 2px;
+}
+
+.tui-last-child {
+  margin-left: 2px;
+}
+
+.tui-next {
+  margin-left: 5px;
 
   @media screen and (min-width: $tablet) {
-    gap: 10px;
+    margin-left: 14px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-left: 24px;
   }
 }
 
-.pagination__arrows {
-  gap: 5px;
+.tui-prev {
+  margin-right: 5px;
 
   @media screen and (min-width: $tablet) {
-    gap: 8px;
+    margin-right: 14px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-right: 24px;
   }
 }
 
-.pagination__btn {
-  width: 38px;
-  height: 38px;
+.tui-last {
+  margin-left: 5px;
+
+  @media screen and (min-width: $tablet) {
+    margin-left: 8px;
+  }
+}
+
+.tui-first {
+  margin-right: 5px;
+
+  @media screen and (min-width: $tablet) {
+    margin-right: 8px;
+  }
+}
+
+.tui-page-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 36px;
+  height: 36px;
 
   font-weight: 700;
   font-size: 18px;
@@ -54,9 +94,9 @@
   transition: color var(--time) var(--cubic),
     background-color var(--time) var(--cubic);
 
-  &--active {
-    color: var(--secondary-color);
-    background-color: var(--primary-color);
+  @media screen and (min-width: $mobile) {
+    width: 38px;
+    height: 38px;
   }
 
   @media screen and (min-width: $tablet) {
@@ -65,46 +105,56 @@
   }
 }
 
-.pagination__btn-page {
-  border-color: var(--primary-color);
+.tui-is-selected {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
 }
 
-.pagination__arrow-icon {
-  width: 20px;
-  height: 20px;
-
-  fill: currentColor;
-
-  &--double {
-    width: 25px;
-    height: 25px;
-  }
-
-  @media screen and (min-width: $tablet) {
-    width: 24px;
-    height: 24px;
-
-    &--double {
-      width: 30px;
-      height: 30px;
-    }
-  }
-}
-
-.arrow {
+.tui-prev,
+.tui-next {
   color: #000000;
   background-color: var(--secondary-akzent);
 
-  transform: color var(--time) var(--cubic) background-color var(--time)
-    var(--cubic);
+  transition: color var(--time) var(--cubic),
+    background-color var(--time) var(--cubic);
+}
 
-  &:disabled {
-    color: var(--text-secondary-light);
-    background-color: #111111;
+.tui-first,
+.tui-last {
+  color: #000000;
+  background-color: var(--secondary-akzent);
+
+  transition: color var(--time) var(--cubic),
+    background-color var(--time) var(--cubic);
+}
+
+.tui-is-disabled {
+  color: var(--text-secondary-light);
+  background-color: #111111;
+}
+
+.tui-ico-prev,
+.tui-ico-next {
+  width: 25px;
+  height: 25px;
+
+  fill: currentColor;
+
+  @media screen and (min-width: $tablet) {
+    width: 30px;
+    height: 30px;
   }
 }
 
-// .prev-arrow {
-//   color: var(--text-secondary-light);
-//   background-color: #111111;
-// }
+.tui-ico-last,
+.tui-ico-first {
+  width: 25px;
+  height: 25px;
+
+  fill: currentColor;
+
+  @media screen and (min-width: $tablet) {
+    width: 36px;
+    height: 36px;
+  }
+}
