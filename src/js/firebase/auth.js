@@ -10,15 +10,25 @@ const stateButton = document.querySelector('.state-button');
 
 authUtils.authSentry();
 
-signUpForm.addEventListener('submit', authUtils.signUp);
-signInForm.addEventListener('submit', authUtils.signIn);
+if (signUpForm) {
+  signUpForm.addEventListener('submit', authUtils.signUp);
+}
+if (signInForm) {
+  signInForm.addEventListener('submit', authUtils.signIn);
+}
+if (testButton) {
+  testButton.addEventListener('click', () => {
+    authUtils.getUserProfile();
+  });
+}
+if (stateButton) {
+  stateButton.addEventListener('click', () => {
+    console.log(globalState.get());
+  });
+}
 
-testButton.addEventListener('click', () => {
-  authUtils.getUserProfile();
-});
-stateButton.addEventListener('click', () => {
-  console.log(globalState.get());
-});
-logoutButton.addEventListener('click', () => {
-  authUtils.signOutUser();
-});
+if (logoutButton) {
+  logoutButton.addEventListener('click', () => {
+    authUtils.signOutUser();
+  });
+}

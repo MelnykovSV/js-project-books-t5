@@ -462,5 +462,5 @@ export const INITIAL_STATE_VALUE = {
     // },
   ],
 
-  // theme: 'light',
+  theme: 'light',
 };

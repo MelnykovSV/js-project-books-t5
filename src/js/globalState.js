@@ -36,7 +36,7 @@ class StateUtility {
   //Sets shoppingList value. Requires a single argument ('light'||'dark')
   setTheme(value) {
     globalStateObject.theme = value;
-    this.saveData();   
+    this.saveData();
   }
 
   //Writes global state object to local storage
@@ -49,6 +49,7 @@ class StateUtility {
     const status = await authUtils.isAuthenticated();
     if (status) {
       databaseUtils.writeUserData();
+      localStorage.setItem('userData', JSON.stringify(this.get()));
     } else this.writeToLocalStorage();
   }
 }
