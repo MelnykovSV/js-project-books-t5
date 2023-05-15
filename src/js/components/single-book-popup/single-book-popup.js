@@ -1,5 +1,7 @@
 // import { remove } from 'toastr';
 import { fetchSingleBook } from '../../api';
+import authUtils from '../../firebase/firebaseAuth';
+import globalState from '../../globalState';
 
 const imageAmazon = new URL(
   '../../../images/single-book/amazon.png',
@@ -30,9 +32,35 @@ const backdrop = document.querySelector('.book-backdrop');
 const closeButton = document.querySelector('.modal__close');
 const bookPopUpCard = document.querySelector('.book-pop-up__card');
 
+const bookModal = document.querySelector('.book-modal');
+
+const popUpButtonContainer = document.querySelector('.pop-up-button-container');
+
+let currentBook;
+
 closeButton.addEventListener('click', () => {
   backdrop.classList.add('hidden');
   document.body.style.overflow = '';
+});
+
+bookModal.addEventListener('click', e => {
+  e.preventDefault();
+
+  if (e.target.classList.contains('book__add-btn')) {
+    globalState.setShoppingList([...globalState.shoppingList(), currentBook]);
+    console.log('book added');
+    backdrop.classList.add('hidden');
+    document.body.style.overflow = '';
+  } else if (e.target.classList.contains('book__remove-btn')) {
+    globalState.setShoppingList(
+      globalState.shoppingList().filter(item => {
+        return item._id !== currentBook._id;
+      })
+    );
+    console.log('book removed');
+    backdrop.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
 });
 
 function closeModal(e) {
@@ -53,6 +81,37 @@ export async function showSingleBookPopUp(e) {
     const { data } = await fetchSingleBook(e.target.dataset.id);
     const markup = createPopUpMarkup(data);
     bookPopUpCard.innerHTML = markup;
+    const {
+      _id,
+      list_name,
+      author,
+      book_image,
+      description,
+      title,
+      buy_links,
+    } = data;
+    console.log(data);
+
+    currentBook = {
+      _id,
+      // eslint-disable-next-line quotes
+      list_name: list_name ? list_name : "Sorry, we lost this book's ganre.",
+      // eslint-disable-next-line quotes
+      author: author ? author : "Sorry, we lost this book's author.",
+      book_image,
+      description: description
+        ? description
+        : // eslint-disable-next-line quotes
+          "Sorry, we lost this book's description.",
+      // eslint-disable-next-line quotes
+      title: title ? title : "Sorry, we lost this book's title.",
+      amazonUrl: buy_links[0].url,
+      appleUrl: buy_links[1].url,
+      bookShopUrl: buy_links[4].url,
+    };
+
+    popUpButtonContainer.innerHTML = chooseMarkup(data._id);
+
     document.addEventListener('keydown', closeModal);
     backdrop.addEventListener('click', closeModal);
     backdrop.classList.remove('hidden');
@@ -108,5 +167,32 @@ function createPopUpMarkup({
     </div>
   `;
 }
+
+function createButtonMarkupAdd(id) {
+  return `<a class="book__add-remove-link" href="#"><button class="book__add-remove-btn book__add-btn js-add-remove" data-id=${id}>Add to shopping list</button></a>`;
+}
+function createButtonMarkupRemove(id) {
+  return `<a class="book__add-remove-link" href="#"><button class="book__add-remove-btn book__remove-btn js-add-remove" data-id=${id}>Remove from shopping list</button></a><div><p class="greetings hidden2">Сongratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”. </p></div>`;
+}
+function createButtonMarkupAuthorize() {
+  return '<div><p class="greetings hidden2">To enhance your shopping experience, we have introduced a new feature allowing you to add books directly to your shopping list on our website. However, you need to authorize your account to access this functionality.  </p></div>';
+}
+
+function chooseMarkup(id) {
+  if (authUtils.getUserStatus()) {
+    const searchResult = globalState.shoppingList().find(item => {
+      return item._id === id;
+    });
+    if (searchResult) {
+      return createButtonMarkupRemove(id);
+    } else {
+      return createButtonMarkupAdd(id);
+    }
+  } else {
+    return createButtonMarkupAuthorize();
+  }
+}
+
+// authUtils.getCurrentUserId().then(data => console.log(data));
 
 rootElement.addEventListener('click', showSingleBookPopUp);

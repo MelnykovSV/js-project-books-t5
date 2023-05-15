@@ -24,6 +24,8 @@ const auth = getAuth(app);
 
 const authComponent = document.querySelector('.auth-component');
 
+let userStatus = false;
+
 class FirebaseAuth {
   signUp = e => {
     e.preventDefault();
@@ -47,6 +49,7 @@ class FirebaseAuth {
         })
         .finally(() => {
           // e.target.classList.add('visually-hidden');
+          // userStatus = true;
           document
             .querySelector('.backdrop-form')
             .classList.add('backdrop-form--is-hidden');
@@ -76,6 +79,7 @@ class FirebaseAuth {
         })
         .finally(() => {
           // e.target.classList.add('visually-hidden');
+          // userStatus = true;
           document
             .querySelector('.backdrop-form')
             .classList.add('backdrop-form--is-hidden');
@@ -99,6 +103,9 @@ class FirebaseAuth {
           [error.code, error.message],
           'Sorry, unexpected error occured'
         );
+      })
+      .finally(() => {
+        // userStatus = false;
       });
   };
 
@@ -109,7 +116,7 @@ class FirebaseAuth {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
-
+        userStatus = true;
         databaseUtils.getUserData().then(data => {
           if (data) {
             globalState.set(data);
@@ -127,6 +134,7 @@ class FirebaseAuth {
         document.body.classList.add('is-logged');
       } else {
         // User is signed out
+        userStatus = false;
         localStorage.removeItem('userData');
         if (localStorage.getItem('globalState')) {
           globalState.set(JSON.parse(localStorage.getItem('globalState')));
@@ -236,15 +244,10 @@ class FirebaseAuth {
     ).textContent = `${name}`;
   };
 
-  // getUserProfile() {
-  //   const user = auth.currentUser;
-  //   if (user !== null) {
-
-  //     console.log(user);
-
-  //     return user;
-  //   }
-  // }
+  getUserStatus = () => {
+    console.log(userStatus);
+    return userStatus;
+  };
 }
 
 const authUtils = new FirebaseAuth();
