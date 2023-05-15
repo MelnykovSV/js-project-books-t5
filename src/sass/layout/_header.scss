@@ -348,6 +348,10 @@ html.dark .switcher-theme__status {
     color: var(--primary-color);
   }
 
+  &:hover {
+    color: var(--default-primary-color);
+  }
+
   &--current {
     font-weight: 700;
     color: var(--default-secondary-color);
@@ -356,6 +360,10 @@ html.dark .switcher-theme__status {
 
     @media screen and (min-width: $tablet) {
       transform: translateX(0);
+    }
+
+    &:hover {
+      color: var(--default-secondary-color);
     }
   }
 }

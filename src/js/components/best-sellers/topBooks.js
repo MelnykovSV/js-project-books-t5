@@ -1,21 +1,26 @@
-import { fetchCategoryBook, fetchTopBooks } from '../../api';
+import { fetchTopBooks } from '../../api';
 
 import { getBooksByCategory } from '../category-book-Vlada/category';
 
 import { createMarkupAllBooks } from './markupTopBooks';
 
 const categoriesRoot = document.querySelector('.categories-root');
+const categoryList = document.querySelector('.categories-links-list');
+
+categoriesRoot.addEventListener('click', bestSellersClickHandler);
 
 export async function getAllTopBooks() {
-  const { data } = await fetchTopBooks();
-  categoriesRoot.insertAdjacentHTML('beforeend', createMarkupAllBooks(data));
-
-  const booksList = document.querySelector('.top-books');
-  booksList.addEventListener('click', bestSellersClickHandler);
+  try {
+    const { data } = await fetchTopBooks();
+    categoriesRoot.innerHTML = createMarkupAllBooks(data);
+  } catch (error) {
+    console.log(error);
+  }
 }
 getAllTopBooks();
 
 function bestSellersClickHandler(event) {
+  console.log(1);
   if (event.target.closest('.books__item')) {
     const currentBook = event.target.closest('.books__item');
     const bookID = currentBook.dataset.id;
@@ -24,8 +29,17 @@ function bestSellersClickHandler(event) {
     const currentCategory =
       event.target.closest('.top-books__item').children[0];
     const categoryName = currentCategory.textContent;
+
+    const activeLinkEl = categoryList.querySelector('.active-link');
+    activeLinkEl.classList.remove('active-link');
+
+    const attributeValue = categoryName.split(' ').join('');
+    const currentLink = document.querySelector(
+      `[data-category=${attributeValue}]`
+    );
+    currentLink.classList.add('active-link');
+
     getBooksByCategory(categoryName);
-    // renderBooksCategory(categoryName);
   }
 }
 
