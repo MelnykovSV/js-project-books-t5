@@ -7,9 +7,9 @@ let itemsPerPage;
 let visiblePages;
 let lastPage;
 
-document.querySelector('.state-button').addEventListener('click', () => {
-  console.log(globalState.shoppingList());
-});
+// document.querySelector('.state-button').addEventListener('click', () => {
+//   console.log(globalState.shoppingList());
+// });
 
 // console.log(globalState.shoppingList());
 const query = matchMedia('(max-width: 767px)');

@@ -1,8 +1,8 @@
 // import globalState from '../globalState';
 import authUtils from '../firebase/firebaseAuth';
 
-const signUpForm = document.querySelector('.sign-up-form');
-const signInForm = document.querySelector('.sign-in-form');
+// const signUpForm = document.querySelector('.sign-up-form');
+// const signInForm = document.querySelector('.sign-in-form');
 const logoutButtons = document.querySelectorAll('.log-out-btn');
 
 // const testButton = document.querySelector('.test-button');
@@ -20,12 +20,12 @@ if (localStorage.getItem('userName')) {
   }
 }
 
-if (signUpForm) {
-  signUpForm.addEventListener('submit', authUtils.signUp);
-}
-if (signInForm) {
-  signInForm.addEventListener('submit', authUtils.signIn);
-}
+// if (signUpForm) {
+//   signUpForm.addEventListener('submit', authUtils.signUp);
+// }
+// if (signInForm) {
+//   signInForm.addEventListener('submit', authUtils.signIn);
+// }
 // if (testButton) {
 //   testButton.addEventListener('click', () => {
 //     authUtils.getUserProfile();
@@ -42,6 +42,7 @@ if (logoutButtons.length) {
   logoutButtons.forEach(logoutButton => {
     logoutButton.addEventListener('click', () => {
       authUtils.signOutUser();
+      window.location.replace('/index.html');
     });
   });
 }
