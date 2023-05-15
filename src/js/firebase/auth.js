@@ -19,6 +19,7 @@ if (signInForm) {
 if (testButton) {
   testButton.addEventListener('click', () => {
     authUtils.getUserProfile();
+    authUtils.getUserStatus();
   });
 }
 if (stateButton) {
