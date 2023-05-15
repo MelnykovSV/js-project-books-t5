@@ -90,11 +90,17 @@ export async function showSingleBookPopUp(e) {
 
     currentBook = {
       _id,
-      list_name,
-      author,
+      // eslint-disable-next-line quotes
+      list_name: list_name ? list_name : "Sorry, we lost this book's ganre.",
+      // eslint-disable-next-line quotes
+      author: author ? author : "Sorry, we lost this book's author.",
       book_image,
-      description,
-      title,
+      description: description
+        ? description
+        : // eslint-disable-next-line quotes
+          "Sorry, we lost this book's description.",
+      // eslint-disable-next-line quotes
+      title: title ? title : "Sorry, we lost this book's title.",
       amazonUrl: buy_links[0].url,
       appleUrl: buy_links[1].url,
       bookShopUrl: buy_links[4].url,
