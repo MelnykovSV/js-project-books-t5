@@ -1,108 +1,223 @@
-.pagination,
-.pagination__arrows,
-.pagination__pages,
-.pagination__btn {
-  display: flex;
+.paginator-container {
+  display: grid;
   justify-content: center;
+
+  grid-template-columns: [first] 38px [line2] 5px [line3] 38px [line4] 14px [line5] 38px [line6] 8px [line7] 38px[line8] 8px [line9] 38px [line10] 14px [line11] 38px [line12] 8px [line13] 38px [end];
+
+  @media screen and (max-width: calc($mobile - 1px)) {
+    grid-template-columns: [first] 36px [line2] 0.087fr [line3] 36px [line4] 0.25fr [line5] 36px [line6] 0.14fr [line7] 36px[line8] 0.14fr [line9] 36px [line10] 0.25fr [line11] 36px [line12] 0.14fr [line13] 36px [end];
+  }
+
+  @media screen and (min-width: $tablet) {
+    grid-template-columns: [first] 44px [line2] 8px [line3] 44px [line4] 24px [line5] 44px [line6] 10px [line7] 44px[line8] 10px [line9] 44px [line10] 10px [line11] 44px[line12] 24px [line13] 44px [line14] 8px [line15] 44px [end];
+  }
+}
+
+.tui-page-btn {
+  display: flex;
   align-items: center;
-}
-
-.pagination {
-  gap: 14px;
-
-  &.is-hidden {
-    display: none;
-  }
-
-  @media screen and (min-width: $tablet) {
-    gap: 24px;
-  }
-}
-
-.pagination__pages {
-  gap: 8px;
-
-  @media screen and (min-width: $tablet) {
-    gap: 10px;
-  }
-}
-
-.pagination__arrows {
-  gap: 5px;
-
-  @media screen and (min-width: $tablet) {
-    gap: 8px;
-  }
-}
-
-.pagination__btn {
-  width: 38px;
-  height: 38px;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
 
   font-weight: 700;
   font-size: 18px;
   line-height: 1.22;
 
-  color: var(--logo-dark);
-
+  border: 1px solid var(--primary-color);
   border-radius: 50%;
-  cursor: pointer;
-
   background-color: transparent;
-  border: 1px solid #000000;
 
-  transition: color var(--time) var(--cubic),
-    background-color var(--time) var(--cubic);
+  &:nth-child(3) {
+    grid-column: 5/6;
+  }
 
-  &--active {
-    color: var(--secondary-color);
-    background-color: var(--primary-color);
+  &:nth-child(4) {
+    grid-column: 7/8;
+  }
+
+  &:nth-child(5) {
+    grid-column: 9/10;
+  }
+
+  @media screen and (min-width: $mobile) {
+    width: 38px;
+    height: 38px;
   }
 
   @media screen and (min-width: $tablet) {
     width: 44px;
     height: 44px;
-  }
-}
 
-.pagination__btn-page {
-  border-color: var(--primary-color);
-}
+    &:nth-child(3) {
+      grid-column: 5/6;
+    }
 
-.pagination__arrow-icon {
-  width: 20px;
-  height: 20px;
+    &:nth-child(4) {
+      grid-column: 7/8;
+    }
 
-  fill: currentColor;
+    &:nth-child(5) {
+      grid-column: 9/10;
+    }
 
-  &--double {
-    width: 25px;
-    height: 25px;
-  }
-
-  @media screen and (min-width: $tablet) {
-    width: 24px;
-    height: 24px;
-
-    &--double {
-      width: 30px;
-      height: 30px;
+    &:nth-child(6) {
+      grid-column: 11/12;
     }
   }
 }
 
-.arrow {
-  color: #000000;
-  background-color: var(--secondary-akzent);
+.tui-is-selected {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+}
 
-  transform: color var(--time) var(--cubic) background-color var(--time)
-    var(--cubic);
+.tui-page-btn.tui-first {
+  grid-column: 1/2;
+}
 
-  &:disabled {
-    color: var(--text-secondary-light);
-    background-color: #111111;
+.tui-page-btn.tui-prev {
+  grid-column: 3/4;
+}
+
+.tui-page-btn.tui-next {
+  grid-column: 11/12;
+
+  @media screen and (min-width: $tablet) {
+    grid-column: 13/14;
   }
 }
+
+.tui-page-btn.tui-last {
+  grid-column: 13 / end;
+
+  @media screen and (min-width: $tablet) {
+    grid-column: 15 / end;
+  }
+}
+
+.tui-first,
+.tui-prev,
+.tui-next,
+.tui-last {
+  color: var(--default-secondary-color);
+  background-color: var(--secondary-akzent);
+  border-color: var(--default-secondary-color);
+}
+
+.tui-is-disabled.tui-first,
+.tui-is-disabled.tui-last,
+.tui-is-disabled.tui-next,
+.tui-is-disabled.tui-prev {
+  color: var(--default-primary-color);
+  background-color: var(--default-secondary-color);
+}
+
+// .pagination,
+// .pagination__arrows,
+// .pagination__pages,
+// .pagination__btn {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .pagination {
+//   gap: 14px;
+
+//   &.is-hidden {
+//     display: none;
+//   }
+
+//   @media screen and (min-width: $tablet) {
+//     gap: 24px;
+//   }
+// }
+
+// .pagination__pages {
+//   gap: 8px;
+
+//   @media screen and (min-width: $tablet) {
+//     gap: 10px;
+//   }
+// }
+
+// .pagination__arrows {
+//   gap: 5px;
+
+//   @media screen and (min-width: $tablet) {
+//     gap: 8px;
+//   }
+// }
+
+// .pagination__btn {
+//   width: 38px;
+//   height: 38px;
+
+//   font-weight: 700;
+//   font-size: 18px;
+//   line-height: 1.22;
+
+//   color: var(--logo-dark);
+
+//   border-radius: 50%;
+//   cursor: pointer;
+
+//   background-color: transparent;
+//   border: 1px solid #000000;
+
+//   transition: color var(--time) var(--cubic),
+//     background-color var(--time) var(--cubic);
+
+//   &--active {
+//     color: var(--secondary-color);
+//     background-color: var(--primary-color);
+//   }
+
+//   @media screen and (min-width: $tablet) {
+//     width: 44px;
+//     height: 44px;
+//   }
+// }
+
+// .pagination__btn-page {
+//   border-color: var(--primary-color);
+// }
+
+// .pagination__arrow-icon {
+//   width: 20px;
+//   height: 20px;
+
+//   fill: currentColor;
+
+//   &--double {
+//     width: 25px;
+//     height: 25px;
+//   }
+
+//   @media screen and (min-width: $tablet) {
+//     width: 24px;
+//     height: 24px;
+
+//     &--double {
+//       width: 30px;
+//       height: 30px;
+//     }
+//   }
+// }
+
+// .arrow {
+//   color: #000000;
+//   background-color: var(--secondary-akzent);
+
+//   transform: color var(--time) var(--cubic) background-color var(--time)
+//     var(--cubic);
+
+//   &:disabled {
+//     color: var(--text-secondary-light);
+//     background-color: #111111;
+//   }
+// }
 
 // .prev-arrow {
 //   color: var(--text-secondary-light);
