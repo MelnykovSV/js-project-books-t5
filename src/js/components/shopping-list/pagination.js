@@ -1,29 +1,39 @@
 import globalState from '../../globalState';
 import Pagination from 'tui-pagination';
 import { renderCurrentBookCards } from './cart';
-
-let totalBookCards = globalState.shoppingList().length;
-
+let totalBookCards;
 let currentPage = 1;
 let itemsPerPage;
 let visiblePages;
 let lastPage;
 
+document.querySelector('.state-button').addEventListener('click', () => {
+  console.log(globalState.shoppingList());
+});
+
+// console.log(globalState.shoppingList());
 const query = matchMedia('(max-width: 767px)');
 
-if (query.matches) {
-  itemsPerPage = 4;
-  visiblePages = 2;
-  smallResolutionPaginatorHandler();
-  renderCurrentBookCards(findCurrentBookCards(1, itemsPerPage));
-} else {
-  itemsPerPage = 3;
-  visiblePages = 3;
-  bigResolutionPaginatorHandler();
-  renderCurrentBookCards(findCurrentBookCards(1, itemsPerPage));
+export function initialShoppingList() {
+  console.log(globalState.shoppingList());
+  totalBookCards = globalState.shoppingList().length;
+
+  if (query.matches) {
+    itemsPerPage = 4;
+    visiblePages = 2;
+    smallResolutionPaginatorHandler();
+    renderCurrentBookCards(findCurrentBookCards(1, itemsPerPage));
+  } else {
+    itemsPerPage = 3;
+    visiblePages = 3;
+    bigResolutionPaginatorHandler();
+    renderCurrentBookCards(findCurrentBookCards(1, itemsPerPage));
+  }
 }
 
-lastPage = Math.ceil(totalBookCards / itemsPerPage);
+// let totalBookCards = globalState.shoppingList().length;
+
+// lastPage = Math.ceil(totalBookCards / itemsPerPage);
 
 ///resize sentry
 query.addEventListener('change', event => {
@@ -90,6 +100,7 @@ export function findCurrentBookCards(page, itemsPerPage) {
   if (currentPage === 0) {
     ///show plug
     console.log('show plug');
+    document.querySelector('.js-plug').classList.remove('visually-hidden');
     return;
   }
   // page -= 1;
@@ -113,48 +124,50 @@ export function findCurrentBookCards(page, itemsPerPage) {
 
 function createPaginator({ totalItmes, itemsPerPage, visiblePages, page }) {
   const container = document.querySelector('.paginator-container');
-  if (totalItmes > itemsPerPage) {
-    container.classList.remove('visually-hidden');
-  }
-  const options = {
-    usageStatistics: false,
-    totalItems: totalItmes,
-    itemsPerPage: itemsPerPage,
-    visiblePages: visiblePages,
-    page: page,
-    centerAlign: false,
-    firstItemClassName: 'tui-first-child',
-    lastItemClassName: 'tui-last-child',
-    template: {
-      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-      currentPage:
-        '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-      moveButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
-        '</a>',
-      disabledMoveButton:
-        '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
-        '</span>',
-      moreButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-        '<span class="tui-ico-ellip">...</span>' +
-        '</a>',
-    },
-  };
+  if (container) {
+    if (totalItmes > itemsPerPage) {
+      container.classList.remove('visually-hidden');
+    }
+    const options = {
+      usageStatistics: false,
+      totalItems: totalItmes,
+      itemsPerPage: itemsPerPage,
+      visiblePages: visiblePages,
+      page: page,
+      centerAlign: false,
+      firstItemClassName: 'tui-first-child',
+      lastItemClassName: 'tui-last-child',
+      template: {
+        page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+        currentPage:
+          '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+        moveButton:
+          '<a href="#" class="tui-page-btn tui-{{type}}">' +
+          '<span class="tui-ico-{{type}}">{{type}}</span>' +
+          '</a>',
+        disabledMoveButton:
+          '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+          '<span class="tui-ico-{{type}}">{{type}}</span>' +
+          '</span>',
+        moreButton:
+          '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+          '<span class="tui-ico-ellip">...</span>' +
+          '</a>',
+      },
+    };
 
-  const instance = new Pagination(container, options);
+    const instance = new Pagination(container, options);
 
-  instance.on('afterMove', e => {
-    currentPage = e.page;
-    console.log(`Moved to page ${currentPage}`);
-    const currentBookCardsArray = findCurrentBookCards(e.page, itemsPerPage);
+    instance.on('afterMove', e => {
+      currentPage = e.page;
+      console.log(`Moved to page ${currentPage}`);
+      const currentBookCardsArray = findCurrentBookCards(e.page, itemsPerPage);
 
-    renderCurrentBookCards(currentBookCardsArray);
-  });
-  if (totalItmes <= itemsPerPage) {
-    container.classList.add('visually-hidden');
+      renderCurrentBookCards(currentBookCardsArray);
+    });
+    if (totalItmes <= itemsPerPage) {
+      container.classList.add('visually-hidden');
+    }
   }
 }
 
