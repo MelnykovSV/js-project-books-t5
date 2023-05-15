@@ -10,11 +10,32 @@ const categoryList = document.querySelector('.categories-links-list');
 categoriesRoot.addEventListener('click', bestSellersClickHandler);
 
 export async function getAllTopBooks() {
+  categoriesRoot.innerHTML = '';
+  categoriesRoot.insertAdjacentHTML(
+    'afterbegin',
+    `<div class="lds-default">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>`
+  );
+  const loader = document.querySelector('.lds-default');
   try {
     const { data } = await fetchTopBooks();
     categoriesRoot.innerHTML = createMarkupAllBooks(data);
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    console.log(err);
+  } finally {
+    loader.classList.add('visually-hidden');
   }
 }
 getAllTopBooks();
@@ -42,6 +63,11 @@ function bestSellersClickHandler(event) {
     getBooksByCategory(categoryName);
   }
 }
+
+//  try {
+//     const { data } = await fetchTopBooks();
+//     categoriesRoot.innerHTML = createMarkupAllBooks(data);
+//   }
 
 // function renderBooksCategory(categoryName) {
 //   // const currentCategory = event.target.closest('.top-books__item').children[0];
