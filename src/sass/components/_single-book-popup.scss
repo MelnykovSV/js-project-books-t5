@@ -26,7 +26,6 @@
   }
 }
 
-
 .book-modal {
   position: absolute;
   top: 400px;
@@ -50,7 +49,6 @@
     min-width: 579px;
     padding: 40px;
   }
-
 }
 
 .book-pop-up__card {
@@ -120,7 +118,6 @@
   @media screen and (min-width: $tablet) {
     margin-bottom: 8px;
   }
-
 }
 
 .book__author {
@@ -170,7 +167,6 @@
   }
 }
 
-
 .book__add-remove-link {
   text-decoration: none;
 }
@@ -190,8 +186,8 @@
   display: flex;
   margin: auto;
   margin-bottom: 8px;
-  transition: color var(--time) var(--cubic), background-color var(--time) var(--cubic);
-
+  transition: color var(--time) var(--cubic),
+    background-color var(--time) var(--cubic);
 
   &:hover,
   &:focus {
