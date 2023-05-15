@@ -21,7 +21,10 @@ getCategoryList();
 categoryList.addEventListener('click', handlerCategoryBooks);
 
 function handlerCategoryBooks(event) {
-  if (event.target.classList.contains('js-all-category')) {
+  if (
+    event.target.classList.contains('js-all-category') &&
+    !event.target.classList.contains('active-link')
+  ) {
     const activeLinkEl = categoryList.querySelector('.active-link');
     activeLinkEl.classList.remove('active-link');
 
@@ -31,7 +34,10 @@ function handlerCategoryBooks(event) {
     return;
   }
 
-  if (event.target.classList.contains('category-link')) {
+  if (
+    event.target.classList.contains('category-link') &&
+    !event.target.classList.contains('active-link')
+  ) {
     const activeLinkEl = categoryList.querySelector('.active-link');
     activeLinkEl.classList.remove('active-link');
 
