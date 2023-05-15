@@ -3,7 +3,7 @@ export function renderFoundsList(founds) {
     .map(
       ({ id, imgUrl, img2xUrl, companyName, linkSupport }) => `
      <div class="swiper-slide founds-list__item">
-        <a class="founds-list__link" href="${linkSupport} rel="nofollow noopener noreferrer" target="_blank">
+        <a class="founds-list__link" href="${linkSupport}" rel="nofollow noopener noreferrer" target="_blank">
           ${id.padStart(2, '0')}
           <img
             class="founds-list__icon"
