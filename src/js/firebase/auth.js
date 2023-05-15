@@ -3,7 +3,7 @@ import authUtils from '../firebase/firebaseAuth';
 
 const signUpForm = document.querySelector('.sign-up-form');
 const signInForm = document.querySelector('.sign-in-form');
-const logoutButton = document.querySelector('.user__log-out-btn');
+const logoutButtons = document.querySelectorAll('.log-out-btn');
 
 const testButton = document.querySelector('.test-button');
 const stateButton = document.querySelector('.state-button');
@@ -38,8 +38,10 @@ if (stateButton) {
   });
 }
 
-if (logoutButton) {
-  logoutButton.addEventListener('click', () => {
-    authUtils.signOutUser();
+if (logoutButtons.length) {
+  logoutButtons.forEach(logoutButton => {
+    logoutButton.addEventListener('click', () => {
+      authUtils.signOutUser();
+    });
   });
 }

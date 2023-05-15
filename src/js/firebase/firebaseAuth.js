@@ -135,9 +135,12 @@ class FirebaseAuth {
             globalState.set(INITIAL_STATE_VALUE);
           }
         });
-        authComponent.querySelector(
-          '.auth-component__user-name'
-        ).textContent = `${user.displayName}`;
+
+        const nameLabels = document.querySelectorAll('.user__name');
+
+        nameLabels.forEach(item => {
+          item.textContent = `${user.displayName}`;
+        });
 
         if (!document.body.classList.contains('is-logged')) {
           document.body.classList.add('is-logged');
