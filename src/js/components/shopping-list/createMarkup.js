@@ -1,40 +1,204 @@
 import * as icons from './icons';
 
+// export function createMarkup(data) {
+//   return data
+//     .map(
+//       ({ _id, book_image, title, list_name, descriprion, author, buy_links }) =>
+//         `<li class="card js-card" data-card-id="${_id}">
+//             <div class="card__img-thumb">
+//                 <img class="card__img" src="${book_image}" alt="Book cover" />
+//             </div>
+//             <div
+//                 type="button"
+//                 class="card__delete-btn js-remove-btn"
+//                 data-remove-btn-id="${_id}"
+//             >
+//                 <img class="delete-btn__icon" src="${icons.dump}" alt="Delete icon" />
+//             </div>
+//             <div class="card__descr">
+//                 <h2 class="card__title">${title}</h2>
+//                 <p class="card__subtitle">${list_name}</p>
+//                 <p class="card__text">${descriprion}</p>
+
+//                 <div class="author">
+//                 <p class="author__name">${author}</p>
+
+//                 <ul class="shops list">
+//                     <li class="shop__item shop__item--amazon">
+//                     <a
+//                         class="shop__link link"
+//                         href="${buy_links[0].url}"
+//                         aria-label="Amazon"
+//                     >
+//                         <img
+//                         class="shop__icon"
+//                         srcset="${icons.amazon} 1x, ${icons.amazon2x} 2x"
+//                         src="${icons.amazon}"
+//                         alt="Shop icon"
+//                     /></a>
+//                     </li>
+
+//                     <li class="shop__item shop__item--book">
+//                     <a
+//                         class="shop__link link"
+//                         href="${buy_links[1].url}"
+//                         aria-label="Apple books"
+//                     >
+//                         <img
+//                         class="shop__icon"
+//                         srcset="${icons.appleBook} 1x, ${icons.appleBook2x} 2x"
+//                         src="${icons.appleBook}"
+//                         alt="Shop icon"
+//                         />
+//                     </a>
+//                     </li>
+
+//                     <li class="shop__item shop__item--bookshop">
+//                     <a
+//                         class="shop__link link"
+//                         href="${buy_links[4].url}"
+//                         aria-label="Bookshop"
+//                     >
+//                         <img
+//                         class="shop__icon"
+//                         srcset="${icons.bookshop} 1x, ${icons.bookshop2x} 2x"
+//                         src="${icons.bookshop}"
+//                         alt="Shop icon"
+//                         />
+//                     </a>
+//                     </li>
+//                 </ul>
+//                 </div>
+//             </div>
+//         </li>`
+//     )
+//     .join('');
+// }
+
+// export function createMarkup(data) {
+//   return data
+//     .map(
+//       (el, idx) =>
+//         `<li class="card js-card" data-card-id="${idx}">
+//   <div class="card__img-thumb">
+//     <img
+//       class="card__img"
+//       src="../src/images/shopping-list/test.jpg"
+//       alt="Book cover"
+//     />
+//   </div>
+//   <div
+//     tabindex="0"
+//     type="button"
+//     class="card__delete-btn js-remove-btn"
+//     data-remove-btn-id="${idx}"
+//   >
+//     <img class="delete-btn__icon" src="${icons.dump}" alt="Delete icon" />
+//   </div>
+//   <div class="card__descr">
+//     <h2 class="card__title">I will find you</h2>
+//     <p class="card__subtitle">Hardcover fiction</p>
+//     <p class="card__text">
+//       David Burroughs was once a devoted father to his three-year-old son
+//       Matthew, living a dream life just a short drive away from the
+//       working-class suburb where he and his wife, Cheryl, first fell in
+//       love--until one fateful night when David woke suddenly to discover Matthew
+//       had been murdered while David was asleep just down the hall.
+//     </p>
+
+//     <div class="author">
+//       <p class="author__name">Harlan Coben</p>
+
+//       <ul class="shops list">
+//         <li class="shop__item shop__item--amazon">
+//           <a
+//             class="shop__link link"
+//             href="https://www.amazon.com/"
+//             aria-label="Amazon"
+//           >
+//             <img
+//               class="shop__icon"
+//               srcset="${icons.amazon} 1x, ${icons.amazon2x} 2x"
+//               src="${icons.amazon}"
+//               alt="Shop icon"
+//             />
+//           </a>
+//         </li>
+
+//         <li class="shop__item shop__item--book">
+//           <a
+//             class="shop__link link"
+//             href="https://apps.apple.com/ru/app/apple-books/id364709193"
+//             aria-label="Apple books"
+//           >
+//             <img
+//               class="shop__icon"
+//               srcset="${icons.appleBook} 1x, ${icons.appleBook2x} 2x"
+//               src="${icons.appleBook}"
+//               alt="Shop icon"
+//             />
+//           </a>
+//         </li>
+
+//         <li class="shop__item shop__item--bookshop">
+//           <a
+//             class="shop__link link"
+//             href="https://bookshop.org/"
+//             aria-label="Bookshop"
+//           >
+//             <img
+//               class="shop__icon"
+//               srcset="${icons.bookshop} 1x, ${icons.bookshop2x} 2x"
+//               src="${icons.bookshop}"
+//               alt="Shop icon"
+//             />
+//           </a>
+//         </li>
+//       </ul>
+//     </div>
+//   </div>
+//             </li>`
+//     )
+//     .join('');
+// }
+
 export function createMarkup(data) {
   return `<li class="card js-card" data-card-id="${data._id}">
   <div class="card__img-thumb">
     <img
       class="card__img"
-
-      src="${data.book_image || icons.bookPlug2x}"
-      alt="${data.title || 'No'} book cover"
+      src="${data.book_image}"
+      alt="${data.title} book cover"
     />
   </div>
-  
-    <button type="button" class='card__delete-btn js-shopping-list-delete-button' data-card-id="${
-      data._id
-    }" aria-label="delete button">
-      <svg class="delete-btn__icon" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8.25 2.75H13.75M2.75 5.5H19.25M17.4167 5.5L16.7738 15.1427C16.6774 16.5894 16.6291 17.3128 16.3167 17.8613C16.0416 18.3441 15.6266 18.7323 15.1265 18.9747C14.5585 19.25 13.8335 19.25 12.3836 19.25H9.61643C8.1665 19.25 7.44153 19.25 6.87348 18.9747C6.37336 18.7323 5.95841 18.3441 5.68332 17.8613C5.37085 17.3128 5.32263 16.5894 5.22618 15.1427L4.58333 5.5M9.16667 9.625V14.2083M12.8333 9.625V14.2083" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-  
-
+  <div
+    tabindex="0"
+    type="button"
+    class="card__delete-btn js-remove-btn"
+    data-remove-btn-id="${data._id}"
+  >
+  <button type="button" class='js-shopping-list-delete-button' data-card-id="${data._id}" aria-label="delete button">
+  <svg class="delete-btn__icon" width="18" height="18">
+    <use href="images/icons.svg#icon-trash"></use>
+  </svg>
+</button>
+    
+  </div>
   <div class="card__descr">
-    <h2 class="card__title">${data.title || 'No title'}</h2>
-    <p class="card__subtitle">${data.list_name || 'No category'}</p>
+    <h2 class="card__title">${data.title}</h2>
+    <p class="card__subtitle">${data.list_name}</p>
     <p class="card__text">
-    ${data.description || 'No description'}
+    ${data.description}
     </p>
 
     <div class="author">
-      <p class="author__name">${data.author || 'No author name'}</p>
+      <p class="author__name">${data.author}</p>
 
       <ul class="shops list">
         <li class="shop__item shop__item--amazon">
           <a
             class="shop__link link"
-            href="${data.amazonUrl || 'https://www.amazon.com/'}"
+            href="${data.amazonUrl}"
             aria-label="Amazon"
           >
             <img
@@ -49,10 +213,7 @@ export function createMarkup(data) {
         <li class="shop__item shop__item--book">
           <a
             class="shop__link link"
-            href="${
-              data.appleUrl ||
-              'https://apps.apple.com/ua/app/apple-books/id364709193'
-            }"
+            href="${data.appleUrl}"
             aria-label="Apple books"
           >
             <img
@@ -67,7 +228,7 @@ export function createMarkup(data) {
         <li class="shop__item shop__item--bookshop">
           <a
             class="shop__link link"
-            href="${data.bookShopUrl || 'https://bookshop.org/'}"
+            href="${data.bookShopUrl}"
             aria-label="Bookshop"
           >
             <img

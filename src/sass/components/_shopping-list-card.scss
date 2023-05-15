@@ -15,10 +15,6 @@
   border: 2px solid var(--primary-akzent-rgba);
   border-radius: 16px;
 
-  @media screen and (max-width: 350px) {
-    height: 170px;
-  }
-
   @media screen and (min-width: $tablet) {
     padding: 24px;
   }
@@ -29,45 +25,19 @@
   top: 14px;
   right: 14px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  height: 28px;
-  width: 28px;
-
-  padding: 0;
-  margin: 0;
-  border: none;
   border-radius: 50%;
 
   cursor: pointer;
 
-  background-color: var(--primary-akzent);
-  // background-image: url(../images/shopping-list/icons/trash.png);
-  // background-repeat: no-repeat;
-  // background-position: center;
-  // background-size: 16px 16px;
-
   @media screen and (min-width: $tablet) {
     top: 24px;
     right: 24px;
-
-    height: 34px;
-    width: 34px;
-
-    background-size: 18px 18px;
   }
 }
 
 .delete-btn__icon {
-  width: 16px;
-  height: 16px;
-
-  @media screen and (min-width: $tablet) {
-    width: 18px;
-    height: 18px;
-  }
+  width: 28px;
+  height: 28px;
 
   @media screen and (min-width: $desktop) {
     top: 34px;
@@ -76,27 +46,20 @@
 }
 
 .card__img-thumb {
-  max-width: 60px;
-  max-height: 90px;
+  width: 100px;
+  height: 142px;
 
   overflow: hidden;
 
   border-radius: 8px;
 
-  @media screen and (min-width: 350px) {
-    max-width: 100px;
-    max-height: 142px;
-  }
-
   @media screen and (min-width: $tablet) {
-    max-width: 116px;
-    max-height: 165px;
+    width: 116px;
+    height: 165px;
   }
 }
 
 .card__img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
 }
 
@@ -110,21 +73,13 @@
 .card__title {
   margin-bottom: 4px;
 
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.12;
 
   letter-spacing: -0.04em;
   text-transform: uppercase;
 
-  @media screen and (max-width: $mobile) {
-    max-width: 165px;
-  }
-
-  @media screen and (min-width: $mobile) {
-    font-size: 14px;
-  }
-
-  @media screen and (min-width: $tablet) {
+  @media screen and (min-width: 335px) {
     font-size: 16px;
   }
 }
@@ -138,10 +93,6 @@
   letter-spacing: 0.03em;
 
   color: var(--text-secondary-light);
-
-  @media screen and (max-width: $mobile) {
-    max-width: 165px;
-  }
 }
 
 .card__text {
