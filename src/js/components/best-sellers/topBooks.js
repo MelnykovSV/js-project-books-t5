@@ -7,11 +7,35 @@ import { createMarkupAllBooks } from './markupTopBooks';
 const categoriesRoot = document.querySelector('.categories-root');
 
 export async function getAllTopBooks() {
-  const { data } = await fetchTopBooks();
-  categoriesRoot.insertAdjacentHTML('beforeend', createMarkupAllBooks(data));
+  categoriesRoot.insertAdjacentHTML(
+    'afterbegin',
+    `<div class="lds-default">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>`
+  );
+  const loader = document.querySelector('.lds-default');
+  try {
+    const { data } = await fetchTopBooks();
+    categoriesRoot.insertAdjacentHTML('beforeend', createMarkupAllBooks(data));
 
-  const booksList = document.querySelector('.top-books');
-  booksList.addEventListener('click', bestSellersClickHandler);
+    const booksList = document.querySelector('.top-books');
+    booksList.addEventListener('click', bestSellersClickHandler);
+  } catch (err) {
+    console.log(err);
+  } finally {
+    loader.classList.add('visually-hidden');
+  }
 }
 getAllTopBooks();
 
