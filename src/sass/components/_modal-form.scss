@@ -14,6 +14,7 @@
   transition: all var(--time) var(--cubic);
 
   overflow-y: auto;
+  overflow-x: hidden;
 
   &--is-hidden {
     visibility: hidden;
