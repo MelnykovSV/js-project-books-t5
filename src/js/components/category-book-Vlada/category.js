@@ -3,8 +3,17 @@ import { fetchBooksByCategory } from '../../api';
 const categoriesRoot = document.querySelector('.categories-root');
 
 export async function getBooksByCategory(category) {
-  const { data } = await fetchBooksByCategory(category);
-  categoriesRoot.innerHTML = markupBooksByCategory(data, category);
+  categoriesRoot.innerHTML = '';
+  const loader = document.querySelector('.lds-default');
+  loader.classList.remove('visually-hidden');
+  try {
+    const { data } = await fetchBooksByCategory(category);
+    categoriesRoot.innerHTML = markupBooksByCategory(data, category);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    loader.classList.add('visually-hidden');
+  }
 }
 
 function markupBooksByCategory(data, category) {
