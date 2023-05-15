@@ -15,6 +15,7 @@ document.body.addEventListener('click', e => {
     document
       .querySelector('.backdrop-form')
       .classList.add('backdrop-form--is-hidden');
+    document.body.classList.remove('body-lock');
   }
 });
 
