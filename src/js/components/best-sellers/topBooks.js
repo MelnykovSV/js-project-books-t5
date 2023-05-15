@@ -11,24 +11,9 @@ categoriesRoot.addEventListener('click', bestSellersClickHandler);
 
 export async function getAllTopBooks() {
   categoriesRoot.innerHTML = '';
-  categoriesRoot.insertAdjacentHTML(
-    'afterbegin',
-    `<div class="lds-default">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>`
-  );
   const loader = document.querySelector('.lds-default');
+  loader.classList.remove('visually-hidden');
+
   try {
     const { data } = await fetchTopBooks();
     categoriesRoot.innerHTML = createMarkupAllBooks(data);
