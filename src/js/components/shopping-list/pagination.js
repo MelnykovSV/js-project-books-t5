@@ -1,6 +1,8 @@
 import globalState from '../../globalState';
 import Pagination from 'tui-pagination';
 import { renderCurrentBookCards } from './cart';
+// const next = new URL('./../../../images/angle-right.svg', import.meta.url);
+
 let totalBookCards;
 let currentPage = 1;
 let itemsPerPage;
@@ -30,6 +32,9 @@ export function initialShoppingList() {
     renderCurrentBookCards(findCurrentBookCards(1, itemsPerPage));
   }
 }
+
+// const nextImg = '<img src={next} alt="logo" />';
+// document.querySelector('.tui-next').innerHTML = nextImg;
 
 // let totalBookCards = globalState.shoppingList().length;
 
@@ -142,11 +147,11 @@ function createPaginator({ totalItmes, itemsPerPage, visiblePages, page }) {
           '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
         moveButton:
           '<a href="#" class="tui-page-btn tui-{{type}}">' +
-          '<span class="tui-ico-{{type}}">{{type}}</span>' +
+          '<span class="tui-ico-{{type}}"></span>' +
           '</a>',
         disabledMoveButton:
           '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-          '<span class="tui-ico-{{type}}">{{type}}</span>' +
+          '<span class="tui-ico-{{type}}"></span>' +
           '</span>',
         moreButton:
           '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
