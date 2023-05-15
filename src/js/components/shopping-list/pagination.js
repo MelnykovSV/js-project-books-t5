@@ -1,7 +1,10 @@
 import globalState from '../../globalState';
 import Pagination from 'tui-pagination';
 import { renderCurrentBookCards } from './cart';
-let totalBookCards;
+import * as icons from './icons';
+
+let totalBookCards = globalState.shoppingList().length;
+
 let currentPage = 1;
 let itemsPerPage;
 let visiblePages;
@@ -13,6 +16,7 @@ document.querySelector('.state-button').addEventListener('click', () => {
 
 // console.log(globalState.shoppingList());
 const query = matchMedia('(max-width: 767px)');
+const mobile = matchMedia('(max-width: 374px)');
 
 export function initialShoppingList() {
   console.log(globalState.shoppingList());
@@ -124,50 +128,75 @@ export function findCurrentBookCards(page, itemsPerPage) {
 
 function createPaginator({ totalItmes, itemsPerPage, visiblePages, page }) {
   const container = document.querySelector('.paginator-container');
-  if (container) {
-    if (totalItmes > itemsPerPage) {
-      container.classList.remove('visually-hidden');
+  if (totalItmes > itemsPerPage) {
+    container.classList.remove('visually-hidden');
+  }
+
+  const desktopPaginationOptions = {
+    usageStatistics: false,
+    totalItems: totalItmes,
+    itemsPerPage: itemsPerPage,
+    visiblePages: visiblePages,
+    page: page,
+    centerAlign: false,
+    firstItemClassName: 'tui-first-child',
+    lastItemClassName: 'tui-last-child',
+    template: {
+      page: '<a href="#" class="pagination__pages tui-page-btn">{{page}}</a>',
+      currentPage:
+        '<strong class="pagination__pages tui-page-btn tui-is-selected">{{page}}</strong>',
+      moveButton:
+        '<a href="#" class="tui-page-btn tui-{{type}}">' +
+        `<svg class="tui-ico-{{type}}"><use href="${icons.arrows}#icon-{{type}}"></use></svg>` +
+        '</a>',
+      disabledMoveButton:
+        '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+        `<svg class="tui-ico-{{type}}"><use href="${icons.arrows}#icon-{{type}}"></use></svg>` +
+        '</span>',
+      moreButton:
+        '<a href="#" class="pagination__pages tui-page-btn tui-{{type}}-is-ellip">' +
+        '<span class="tui-ico-ellip">...</span>' +
+        '</a>',
+    },
+  };
+  const mobilePaginationOptions = {
+    usageStatistics: false,
+    totalItems: totalItmes,
+    itemsPerPage: itemsPerPage,
+    visiblePages: 1,
+    page: page,
+    centerAlign: false,
+    firstItemClassName: 'tui-first-child',
+    lastItemClassName: 'tui-last-child',
+    template: {
+      page: '<a href="#" class="pagination__pages tui-page-btn">{{page}}</a>',
+      moveButton:
+        '<a href="#" class="tui-page-btn tui-{{type}}">' +
+        `<svg class="tui-ico-{{type}}"><use href="${icons.arrows}#icon-{{type}}"></use></svg>` +
+        '</a>',
+      disabledMoveButton:
+        '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+        `<svg class="tui-ico-{{type}}"><use href="${icons.arrows}#icon-{{type}}"></use></svg>` +
+        '</span>',
+    },
+  };
+
+  if (mobile.matches) {
+    createPaginationInstance(container, mobilePaginationOptions);
+  } else {
+    createPaginationInstance(container, desktopPaginationOptions);
+  }
+
+  mobile.addEventListener('change', event => {
+    if (event.matches) {
+      createPaginationInstance(container, mobilePaginationOptions);
+    } else {
+      createPaginationInstance(container, desktopPaginationOptions);
     }
-    const options = {
-      usageStatistics: false,
-      totalItems: totalItmes,
-      itemsPerPage: itemsPerPage,
-      visiblePages: visiblePages,
-      page: page,
-      centerAlign: false,
-      firstItemClassName: 'tui-first-child',
-      lastItemClassName: 'tui-last-child',
-      template: {
-        page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-        currentPage:
-          '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-        moveButton:
-          '<a href="#" class="tui-page-btn tui-{{type}}">' +
-          '<span class="tui-ico-{{type}}">{{type}}</span>' +
-          '</a>',
-        disabledMoveButton:
-          '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-          '<span class="tui-ico-{{type}}">{{type}}</span>' +
-          '</span>',
-        moreButton:
-          '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-          '<span class="tui-ico-ellip">...</span>' +
-          '</a>',
-      },
-    };
+  });
 
-    const instance = new Pagination(container, options);
-
-    instance.on('afterMove', e => {
-      currentPage = e.page;
-      console.log(`Moved to page ${currentPage}`);
-      const currentBookCardsArray = findCurrentBookCards(e.page, itemsPerPage);
-
-      renderCurrentBookCards(currentBookCardsArray);
-    });
-    if (totalItmes <= itemsPerPage) {
-      container.classList.add('visually-hidden');
-    }
+  if (totalItmes <= itemsPerPage) {
+    container.classList.add('visually-hidden');
   }
 }
 
@@ -186,5 +215,17 @@ function bigResolutionPaginatorHandler() {
     itemsPerPage: itemsPerPage,
     visiblePages: visiblePages,
     page: currentPage,
+  });
+}
+
+function createPaginationInstance(container, options) {
+  const instance = new Pagination(container, options);
+
+  instance.on('afterMove', e => {
+    currentPage = e.page;
+    console.log(`Moved to page ${currentPage}`);
+    const currentBookCardsArray = findCurrentBookCards(e.page, itemsPerPage);
+
+    renderCurrentBookCards(currentBookCardsArray);
   });
 }
