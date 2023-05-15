@@ -38,6 +38,8 @@ class FirebaseAuth {
       createUserWithEmailAndPassword(auth, email, password, name)
         .then(async () => {
           this.updateUserName(name);
+          //new
+          localStorage.setItem('userName', name);
         })
         .catch(error => {
           notification.error(
@@ -50,9 +52,11 @@ class FirebaseAuth {
         .finally(() => {
           // e.target.classList.add('visually-hidden');
           // userStatus = true;
+
           document
             .querySelector('.backdrop-form')
             .classList.add('backdrop-form--is-hidden');
+
           e.target.reset();
         });
     }
@@ -69,7 +73,9 @@ class FirebaseAuth {
         .then(userCredential => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
+          // console.log(user);
+          // console.log(user.displayName);
+          localStorage.setItem('userName', user.displayName);
         })
         .catch(error => {
           notification.error(
@@ -95,6 +101,7 @@ class FirebaseAuth {
         document
           .querySelector('.js-user')
           .classList.remove('user--is-active-btns-box');
+        localStorage.removeItem('userName');
       })
       .catch(error => {
         // An error happened.
@@ -116,6 +123,7 @@ class FirebaseAuth {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
+        localStorage.setItem('userName', user.displayName);
         userStatus = true;
         databaseUtils.getUserData().then(data => {
           if (data) {
@@ -131,7 +139,9 @@ class FirebaseAuth {
           '.auth-component__user-name'
         ).textContent = `${user.displayName}`;
 
-        document.body.classList.add('is-logged');
+        if (!document.body.classList.contains('is-logged')) {
+          document.body.classList.add('is-logged');
+        }
       } else {
         // User is signed out
         userStatus = false;
