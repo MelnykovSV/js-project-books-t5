@@ -10,22 +10,34 @@ let itemsPerPage;
 let visiblePages;
 let lastPage;
 
+document.querySelector('.state-button').addEventListener('click', () => {
+  console.log(globalState.shoppingList());
+});
+
+// console.log(globalState.shoppingList());
 const query = matchMedia('(max-width: 767px)');
 const mobile = matchMedia('(max-width: 374px)');
 
-if (query.matches) {
-  itemsPerPage = 4;
-  visiblePages = 2;
-  smallResolutionPaginatorHandler();
-  renderCurrentBookCards(findCurrentBookCards(1, itemsPerPage));
-} else {
-  itemsPerPage = 3;
-  visiblePages = 3;
-  bigResolutionPaginatorHandler();
-  renderCurrentBookCards(findCurrentBookCards(1, itemsPerPage));
+export function initialShoppingList() {
+  console.log(globalState.shoppingList());
+  totalBookCards = globalState.shoppingList().length;
+
+  if (query.matches) {
+    itemsPerPage = 4;
+    visiblePages = 2;
+    smallResolutionPaginatorHandler();
+    renderCurrentBookCards(findCurrentBookCards(1, itemsPerPage));
+  } else {
+    itemsPerPage = 3;
+    visiblePages = 3;
+    bigResolutionPaginatorHandler();
+    renderCurrentBookCards(findCurrentBookCards(1, itemsPerPage));
+  }
 }
 
-lastPage = Math.ceil(totalBookCards / itemsPerPage);
+// let totalBookCards = globalState.shoppingList().length;
+
+// lastPage = Math.ceil(totalBookCards / itemsPerPage);
 
 ///resize sentry
 query.addEventListener('change', event => {
@@ -92,6 +104,7 @@ export function findCurrentBookCards(page, itemsPerPage) {
   if (currentPage === 0) {
     ///show plug
     console.log('show plug');
+    document.querySelector('.js-plug').classList.remove('visually-hidden');
     return;
   }
   // page -= 1;
