@@ -103,7 +103,6 @@ export function findCurrentBookCards(page, itemsPerPage) {
     document.querySelector('.js-plug')?.classList.remove('visually-hidden');
     return;
   }
-  // page -= 1;
 
   createPaginator({
     totalItmes: totalBookCards,

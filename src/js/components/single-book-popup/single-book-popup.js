@@ -49,6 +49,8 @@ bookModal.addEventListener('click', e => {
   if (e.target.classList.contains('book__add-btn')) {
     globalState.setShoppingList([...globalState.shoppingList(), currentBook]);
     console.log('book added');
+    backdrop.classList.add('hidden');
+    document.body.style.overflow = '';
   } else if (e.target.classList.contains('book__remove-btn')) {
     globalState.setShoppingList(
       globalState.shoppingList().filter(item => {
@@ -56,6 +58,8 @@ bookModal.addEventListener('click', e => {
       })
     );
     console.log('book removed');
+    backdrop.classList.add('hidden');
+    document.body.style.overflow = '';
   }
 });
 
