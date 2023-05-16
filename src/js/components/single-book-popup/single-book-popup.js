@@ -40,7 +40,7 @@ let currentBook;
 
 closeButton.addEventListener('click', () => {
   backdrop.classList.add('hidden');
-  document.body.style.overflow = '';
+  document.body.classList.remove('body-lock');
 });
 
 bookModal.addEventListener('click', e => {
@@ -48,28 +48,32 @@ bookModal.addEventListener('click', e => {
 
   if (e.target.classList.contains('book__add-btn')) {
     globalState.setShoppingList([...globalState.shoppingList(), currentBook]);
-    console.log('book added');
     backdrop.classList.add('hidden');
-    document.body.style.overflow = '';
+    document.body.classList.remove('body-lock');
   } else if (e.target.classList.contains('book__remove-btn')) {
     globalState.setShoppingList(
       globalState.shoppingList().filter(item => {
         return item._id !== currentBook._id;
       })
     );
-    console.log('book removed');
     backdrop.classList.add('hidden');
-    document.body.style.overflow = '';
+    document.body.classList.remove('body-lock');
   }
 });
+
+function showModal() {
+  document.addEventListener('keydown', closeModal);
+  backdrop.addEventListener('click', closeModal);
+  backdrop.classList.remove('hidden');
+  document.body.classList.add('body-lock');
+}
 
 function closeModal(e) {
   if (e.code === 'Escape' || e.target.classList.contains('book-backdrop')) {
     document.removeEventListener('keydown', closeModal);
     backdrop.removeEventListener('click', closeModal);
-    console.log('1234');
     backdrop.classList.add('hidden');
-    document.body.style.overflow = '';
+    document.body.classList.remove('body-lock');
   }
 }
 
@@ -78,44 +82,44 @@ export async function showSingleBookPopUp(e) {
     e.target.classList.contains('books__item') ||
     e.target.classList.contains('category__item')
   ) {
-    const { data } = await fetchSingleBook(e.target.dataset.id);
-    const markup = createPopUpMarkup(data);
-    bookPopUpCard.innerHTML = markup;
-    const {
-      _id,
-      list_name,
-      author,
-      book_image,
-      description,
-      title,
-      buy_links,
-    } = data;
-    console.log(data);
+    try {
+      const { data } = await fetchSingleBook(e.target.dataset.id);
+      const markup = createPopUpMarkup(data);
+      bookPopUpCard.innerHTML = markup;
+      const {
+        _id,
+        list_name,
+        author,
+        book_image,
+        description,
+        title,
+        buy_links,
+      } = data;
 
-    currentBook = {
-      _id,
-      // eslint-disable-next-line quotes
-      list_name: list_name ? list_name : "Sorry, we lost this book's ganre.",
-      // eslint-disable-next-line quotes
-      author: author ? author : "Sorry, we lost this book's author.",
-      book_image,
-      description: description
-        ? description
-        : // eslint-disable-next-line quotes
-          "Sorry, we lost this book's description.",
-      // eslint-disable-next-line quotes
-      title: title ? title : "Sorry, we lost this book's title.",
-      amazonUrl: buy_links[0].url,
-      appleUrl: buy_links[1].url,
-      bookShopUrl: buy_links[4].url,
-    };
+      currentBook = {
+        _id,
+        // eslint-disable-next-line quotes
+        list_name: list_name ? list_name : "Sorry, we lost this book's ganre.",
+        // eslint-disable-next-line quotes
+        author: author ? author : "Sorry, we lost this book's author.",
+        book_image,
+        description: description
+          ? description
+          : // eslint-disable-next-line quotes
+            "Sorry, we lost this book's description.",
+        // eslint-disable-next-line quotes
+        title: title ? title : "Sorry, we lost this book's title.",
+        amazonUrl: buy_links[0].url,
+        appleUrl: buy_links[1].url,
+        bookShopUrl: buy_links[4].url,
+      };
 
-    popUpButtonContainer.innerHTML = chooseMarkup(data._id);
+      popUpButtonContainer.innerHTML = chooseMarkup(data._id);
 
-    document.addEventListener('keydown', closeModal);
-    backdrop.addEventListener('click', closeModal);
-    backdrop.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
+      showModal();
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 
@@ -190,7 +194,5 @@ function chooseMarkup(id) {
     return createButtonMarkupAuthorize();
   }
 }
-
-// authUtils.getCurrentUserId().then(data => console.log(data));
 
 rootElement.addEventListener('click', showSingleBookPopUp);
