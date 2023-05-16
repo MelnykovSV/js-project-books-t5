@@ -61,7 +61,7 @@
   width: 100%;
 
   position: absolute;
-  top: 40%;
+  top: 30vh;
   left: 50%;
 
   transform: translate(-50%, -50%);
@@ -72,6 +72,8 @@
 
   @media screen and (min-width: $tablet) {
     gap: 20px;
+    top: 140px;
+    transform: translate(-50%, 0);
 
     max-width: 349px;
   }
