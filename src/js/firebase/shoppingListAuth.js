@@ -42,7 +42,7 @@ if (logoutButtons.length) {
   logoutButtons.forEach(logoutButton => {
     logoutButton.addEventListener('click', () => {
       authUtils.signOutUser();
-      window.location.replace('/index.html');
+      window.location.replace('/js-project-books-t5/index.html');
     });
   });
 }
