@@ -335,6 +335,7 @@ html.dark .switcher-theme__status {
   align-items: center;
   gap: 4px;
   padding: 8px 16px;
+  position: relative;
 
   font-weight: 500;
   font-size: 14px;
@@ -347,6 +348,21 @@ html.dark .switcher-theme__status {
 
   transition: color var(--time) var(--cubic),
     background-color var(--time) var(--cubic);
+
+  .page-nav__cart-number {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 2px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--primary-akzent);
+    font-size: 8px;
+    color: #ffffff;
+  }
 
   @media screen and (min-width: $tablet) {
     color: var(--primary-color);
