@@ -1,4 +1,8 @@
 import globalState from '../globalState';
+import {
+  initialCartCounter,
+  closingCartCounter,
+} from '../components/header/cartNumber';
 
 import {
   getAuth,
@@ -131,6 +135,7 @@ class FirebaseAuth {
 
             localStorage.setItem('userData', JSON.stringify(data));
             initialShoppingList();
+            initialCartCounter();
           } else {
             globalState.set(INITIAL_STATE_VALUE);
           }
@@ -157,6 +162,7 @@ class FirebaseAuth {
         }
 
         authComponent.classList.add('signed-out');
+        closingCartCounter();
       }
     });
   };

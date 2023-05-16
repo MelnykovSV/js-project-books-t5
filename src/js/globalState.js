@@ -1,6 +1,7 @@
 import databaseUtils from './firebase/firebaseDatabase';
 import authUtils from './firebase/firebaseAuth';
 import { INITIAL_STATE_VALUE } from '../constants';
+import { cartCounter } from './components/header/cartNumber';
 
 let globalStateObject = JSON.parse(JSON.stringify(INITIAL_STATE_VALUE));
 
@@ -31,6 +32,7 @@ class StateUtility {
   setShoppingList(value) {
     globalStateObject.shoppingList = [...value];
     this.saveData();
+    cartCounter();
   }
 
   //Sets shoppingList value. Requires a single argument ('light'||'dark')

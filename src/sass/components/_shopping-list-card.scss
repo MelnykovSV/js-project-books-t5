@@ -38,6 +38,7 @@
 .delete-btn__icon {
   width: 28px;
   height: 28px;
+  pointer-events: none;
 
   @media screen and (min-width: $desktop) {
     top: 34px;

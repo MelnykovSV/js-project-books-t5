@@ -5,5 +5,6 @@ import './js/components/single-book-popup/single-book-popup';
 import './js/components/form/formModal';
 import './js/components/category-list/categoryList';
 import './js/firebase/auth';
+// import './js/components/header/cartNumber';
 import './js/components/support/index';
 import './js/components/scrollButton/scrollButton';
