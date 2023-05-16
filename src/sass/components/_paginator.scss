@@ -88,7 +88,9 @@
   }
 }
 .tui-next-is-ellip {
-  display: none !important;
+  @media screen and (max-width: $tablet) {
+    display: none !important;
+  }
 }
 
 .tui-page-btn {

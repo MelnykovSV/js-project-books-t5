@@ -17,7 +17,7 @@ let lastPage;
 const query = matchMedia('(max-width: 767px)');
 
 export function initialShoppingList() {
-  console.log(globalState.shoppingList());
+  // console.log(globalState.shoppingList());
   totalBookCards = globalState.shoppingList().length;
 
   if (query.matches) {
@@ -84,7 +84,7 @@ document.body.addEventListener('click', e => {
 });
 
 export function findCurrentBookCards(page, itemsPerPage) {
-  console.log(`Page number: ${currentPage}`);
+  // console.log(`Page number: ${currentPage}`);
   const currentBookCardsArray = globalState
     .shoppingList()
     .filter((item, index) => {
@@ -95,16 +95,16 @@ export function findCurrentBookCards(page, itemsPerPage) {
     });
 
   if (currentBookCardsArray.length) {
-    console.log(currentBookCardsArray);
+    // console.log(currentBookCardsArray);
     return currentBookCardsArray;
   }
 
   currentPage -= 1;
   totalBookCards = globalState.shoppingList().length;
-  console.log(`new current page ${currentPage}`);
+  // console.log(`new current page ${currentPage}`);
   if (currentPage === 0) {
     ///show plug
-    console.log('show plug');
+    // console.log('show plug');
     document.querySelector('.js-plug')?.classList.remove('visually-hidden');
     return;
   }
@@ -122,7 +122,7 @@ export function findCurrentBookCards(page, itemsPerPage) {
       index <= currentPage * itemsPerPage - 1
     );
   });
-  console.log(secondTry);
+  // console.log(secondTry);
   return secondTry;
 }
 
@@ -164,7 +164,7 @@ function createPaginator({ totalItmes, itemsPerPage, visiblePages, page }) {
 
     instance.on('afterMove', e => {
       currentPage = e.page;
-      console.log(`Moved to page ${currentPage}`);
+      // console.log(`Moved to page ${currentPage}`);
       const currentBookCardsArray = findCurrentBookCards(e.page, itemsPerPage);
 
       renderCurrentBookCards(currentBookCardsArray);

@@ -6,3 +6,4 @@ import './js/components/form/formModal';
 import './js/components/category-list/categoryList';
 import './js/firebase/auth';
 import './js/components/support/index';
+import './js/components/scrollButton/scrollButton';
