@@ -94,11 +94,35 @@
   }
 }
 
-.delete-btn__icon {
-  stroke: black;
-  // fill: black;
-  pointer-events: none;
+.js-shopping-list-delete-button {
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--primary-akzent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+
+  .delete-btn__icon {
+    background-color: #ffffff;
+    margin: 0;
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-position: center;
+
+    -webkit-mask-image: url('./../images/trash.svg');
+    mask-image: url('./../images/trash.svg');
+  }
 }
+// .delete-btn__icon {
+//   stroke: black;
+//   fill: black;
+//   pointer-events: none;
+// }
 
 .plug__img {
   display: block;
