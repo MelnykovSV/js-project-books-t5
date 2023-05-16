@@ -2,6 +2,9 @@
   display: flex;
   gap: 10px;
   justify-content: center;
+  @media screen and (max-width: 380px) {
+    gap: 5px;
+  }
 
   // grid-template-columns: [first] 38px [line2] 5px [line3] 38px [line4] 14px [line5] 38px [line6] 8px [line7] 38px[line8] 8px [line9] 38px [line10] 14px [line11] 38px [line12] 8px [line13] 38px [end];
 
@@ -16,6 +19,9 @@
 
 .tui-prev {
   margin-right: 14px;
+  @media screen and (max-width: 380px) {
+    margin-right: 0;
+  }
   .tui-ico-prev {
     background-color: #000000;
     width: 24px;
@@ -33,6 +39,9 @@
 }
 .tui-next {
   margin-left: 14px;
+  @media screen and (max-width: 380px) {
+    margin-left: 0;
+  }
   .tui-ico-next {
     background-color: #000000;
     width: 24px;
