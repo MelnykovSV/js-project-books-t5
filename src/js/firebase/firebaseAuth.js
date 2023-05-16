@@ -36,6 +36,14 @@ class FirebaseAuth {
     const name = e.target.elements.name.value;
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
+    if (
+      name.length < 3 ||
+      name.length > 20 ||
+      !email.match(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/) ||
+      !password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/)
+    ) {
+      return;
+    }
     if (email && password.length >= 6) {
       authComponent.classList.remove('signed-out');
 
@@ -44,26 +52,29 @@ class FirebaseAuth {
           this.updateUserName(name);
           //new
           localStorage.setItem('userName', name);
-        })
-        .catch(error => {
-          notification.error(
-            [error.code, error.message],
-            'Sorry, unexpected error occured'
-          );
-
-          authComponent.classList.add('signed-out');
-        })
-        .finally(() => {
-          // e.target.classList.add('visually-hidden');
-          // userStatus = true;
 
           document
             .querySelector('.backdrop-form')
             .classList.add('backdrop-form--is-hidden');
-
           e.target.reset();
           document.body.classList.remove('body-lock');
-        });
+        })
+        .catch(error => {
+          if (error.code === 'auth/email-already-in-use') {
+            notification.error(
+              'This email is taken by another user. Please use another email',
+              'Email is already in use'
+            );
+          } else {
+            notification.error(
+              [error.code, error.message],
+              'Sorry, unexpected error occured'
+            );
+          }
+
+          authComponent.classList.add('signed-out');
+        })
+        .finally(() => {});
     }
   };
 
@@ -71,6 +82,10 @@ class FirebaseAuth {
     e.preventDefault();
     const email = e.target.elements.email.value.trim();
     const password = e.target.elements.password.value.trim();
+
+    if (email === '' || password === '') {
+      return;
+    }
     if (email && password.length >= 6) {
       authComponent.classList.remove('signed-out');
 
@@ -81,21 +96,32 @@ class FirebaseAuth {
           // console.log(user);
           // console.log(user.displayName);
           localStorage.setItem('userName', user.displayName);
-        })
-        .catch(error => {
-          notification.error(
-            [error.code, error.message],
-            'Sorry, unexpected error occured'
-          );
-        })
-        .finally(() => {
-          // e.target.classList.add('visually-hidden');
-          // userStatus = true;
           document
             .querySelector('.backdrop-form')
             .classList.add('backdrop-form--is-hidden');
           e.target.reset();
           document.body.classList.remove('body-lock');
+        })
+        .catch(error => {
+          if (
+            error.code === 'auth/user-not-found' ||
+            error.code === 'auth/wrong-password'
+          ) {
+            notification.error(
+              // eslint-disable-next-line quotes
+              "Your login credentials don't match an account in our system ",
+              'Wrong email or password'
+            );
+          } else {
+            notification.error(
+              [error.code, error.message],
+              'Sorry, unexpected error occured'
+            );
+          }
+        })
+        .finally(() => {
+          // e.target.classList.add('visually-hidden');
+          // userStatus = true;
         });
     }
   };
