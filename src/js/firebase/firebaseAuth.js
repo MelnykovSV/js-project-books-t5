@@ -62,6 +62,7 @@ class FirebaseAuth {
             .classList.add('backdrop-form--is-hidden');
 
           e.target.reset();
+          document.body.classList.remove('body-lock');
         });
     }
   };
@@ -94,6 +95,7 @@ class FirebaseAuth {
             .querySelector('.backdrop-form')
             .classList.add('backdrop-form--is-hidden');
           e.target.reset();
+          document.body.classList.remove('body-lock');
         });
     }
   };
