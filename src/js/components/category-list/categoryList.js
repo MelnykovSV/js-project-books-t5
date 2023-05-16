@@ -10,11 +10,15 @@ import { fetchCategoryList } from '../../api';
 const categoryList = document.querySelector('.categories-links-list');
 
 async function getCategoryList() {
-  const { data } = await fetchCategoryList();
-  categoryList.insertAdjacentHTML(
-    'beforeend',
-    createMarkupOfCategoryList(data)
-  );
+  try {
+    const { data } = await fetchCategoryList();
+    categoryList.insertAdjacentHTML(
+      'beforeend',
+      createMarkupOfCategoryList(data)
+    );
+  } catch (error) {
+    console.log(error);
+  }
 }
 getCategoryList();
 
