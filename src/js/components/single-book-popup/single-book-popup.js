@@ -44,7 +44,7 @@ closeButton.addEventListener('click', () => {
 });
 
 bookModal.addEventListener('click', e => {
-  e.preventDefault();
+  // e.preventDefault();
 
   if (e.target.classList.contains('book__add-btn')) {
     globalState.setShoppingList([...globalState.shoppingList(), currentBook]);
@@ -128,9 +128,7 @@ function createPopUpMarkup({
 }) {
   return `
   <div class="thumb">
-      <a class="book__link js-link" href="">
         <img class="book__image" src="${book_image}" alt="${title}" loading="lazy" />
-      </a>
     </div>
     <div class="book__box">
       <div class="book__info">
@@ -169,10 +167,10 @@ function createPopUpMarkup({
 }
 
 function createButtonMarkupAdd(id) {
-  return `<a class="book__add-remove-link" href="#"><button class="book__add-remove-btn book__add-btn js-add-remove" data-id=${id}>Add to shopping list</button></a>`;
+  return `<button class="book__add-remove-btn book__add-btn js-add-remove" data-id=${id}>Add to shopping list</button>`;
 }
 function createButtonMarkupRemove(id) {
-  return `<a class="book__add-remove-link" href="#"><button class="book__add-remove-btn book__remove-btn js-add-remove" data-id=${id}>Remove from shopping list</button></a><div><p class="greetings hidden2">Сongratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”. </p></div>`;
+  return `<button class="book__add-remove-btn book__remove-btn js-add-remove" data-id=${id}>Remove from shopping list</button><div><p class="greetings hidden2">Сongratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”. </p></div>`;
 }
 function createButtonMarkupAuthorize() {
   return '<div><p class="greetings hidden2">To enhance your shopping experience, we have introduced a new feature allowing you to add books directly to your shopping list on our website. However, you need to authorize your account to access this functionality.  </p></div>';

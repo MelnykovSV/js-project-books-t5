@@ -98,6 +98,7 @@
 
   @media screen and (min-width: $tablet) {
     width: 192px;
+    height: 281px;
     margin-bottom: 40px;
   }
 }
@@ -171,9 +172,9 @@
   }
 }
 
-.book__add-remove-link {
-  text-decoration: none;
-}
+// .book__add-remove-link {
+//   text-decoration: none;
+// }
 
 .book__add-remove-btn {
   font-weight: 700;
