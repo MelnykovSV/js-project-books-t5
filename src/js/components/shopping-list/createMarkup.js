@@ -178,9 +178,7 @@ export function createMarkup(data) {
     data-remove-btn-id="${data._id}"
   >
   <button type="button" class='js-shopping-list-delete-button' data-card-id="${data._id}" aria-label="delete button">
-  <svg class="delete-btn__icon" width="18" height="18">
-    <use href="images/icons.svg#icon-trash"></use>
-  </svg>
+  <span class="delete-btn__icon"></span>
 </button>
     
   </div>

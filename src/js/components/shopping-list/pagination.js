@@ -1,6 +1,8 @@
 import globalState from '../../globalState';
 import Pagination from 'tui-pagination';
 import { renderCurrentBookCards } from './cart';
+// const next = new URL('./../../../images/angle-right.svg', import.meta.url);
+
 let totalBookCards;
 let currentPage = 1;
 let itemsPerPage;
@@ -15,7 +17,7 @@ let lastPage;
 const query = matchMedia('(max-width: 767px)');
 
 export function initialShoppingList() {
-  console.log(globalState.shoppingList());
+  // console.log(globalState.shoppingList());
   totalBookCards = globalState.shoppingList().length;
 
   if (query.matches) {
@@ -30,6 +32,9 @@ export function initialShoppingList() {
     renderCurrentBookCards(findCurrentBookCards(1, itemsPerPage));
   }
 }
+
+// const nextImg = '<img src={next} alt="logo" />';
+// document.querySelector('.tui-next').innerHTML = nextImg;
 
 // let totalBookCards = globalState.shoppingList().length;
 
@@ -79,7 +84,7 @@ document.body.addEventListener('click', e => {
 });
 
 export function findCurrentBookCards(page, itemsPerPage) {
-  console.log(`Page number: ${currentPage}`);
+  // console.log(`Page number: ${currentPage}`);
   const currentBookCardsArray = globalState
     .shoppingList()
     .filter((item, index) => {
@@ -90,16 +95,16 @@ export function findCurrentBookCards(page, itemsPerPage) {
     });
 
   if (currentBookCardsArray.length) {
-    console.log(currentBookCardsArray);
+    // console.log(currentBookCardsArray);
     return currentBookCardsArray;
   }
 
   currentPage -= 1;
   totalBookCards = globalState.shoppingList().length;
-  console.log(`new current page ${currentPage}`);
+  // console.log(`new current page ${currentPage}`);
   if (currentPage === 0) {
     ///show plug
-    console.log('show plug');
+    // console.log('show plug');
     document.querySelector('.js-plug')?.classList.remove('visually-hidden');
     return;
   }
@@ -117,7 +122,7 @@ export function findCurrentBookCards(page, itemsPerPage) {
       index <= currentPage * itemsPerPage - 1
     );
   });
-  console.log(secondTry);
+  // console.log(secondTry);
   return secondTry;
 }
 
@@ -142,11 +147,11 @@ function createPaginator({ totalItmes, itemsPerPage, visiblePages, page }) {
           '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
         moveButton:
           '<a href="#" class="tui-page-btn tui-{{type}}">' +
-          '<span class="tui-ico-{{type}}">{{type}}</span>' +
+          '<span class="tui-ico-{{type}}"></span>' +
           '</a>',
         disabledMoveButton:
           '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-          '<span class="tui-ico-{{type}}">{{type}}</span>' +
+          '<span class="tui-ico-{{type}}"></span>' +
           '</span>',
         moreButton:
           '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
@@ -159,7 +164,7 @@ function createPaginator({ totalItmes, itemsPerPage, visiblePages, page }) {
 
     instance.on('afterMove', e => {
       currentPage = e.page;
-      console.log(`Moved to page ${currentPage}`);
+      // console.log(`Moved to page ${currentPage}`);
       const currentBookCardsArray = findCurrentBookCards(e.page, itemsPerPage);
 
       renderCurrentBookCards(currentBookCardsArray);

@@ -1,5 +1,5 @@
 import { createMarkup } from './createMarkup';
-import globalState from '../../globalState';
+// import globalState from '../../globalState';
 
 // const bookCardsArray = globalState.shoppingList();
 // const bookCardsArray = JSON.parse(
@@ -8,7 +8,7 @@ import globalState from '../../globalState';
 
 export function renderCurrentBookCards(bookCardsArray) {
   const container = document.querySelector('.js-shopping-list');
-  console.log(bookCardsArray);
+  // console.log(bookCardsArray);
   if (container) {
     if (bookCardsArray) {
       const listMarkup = bookCardsArray
