@@ -23,7 +23,7 @@
     <script>
       (function () {
         const htmlEl = document.querySelector('html');
-        const data = localStorage.getItem('site-theme');
+        const data = localStorage.getItem('user-theme');
 
         if (!data) {
           htmlEl.classList.add('light');
@@ -56,6 +56,20 @@
             </h1>
 
             <div class="shopping-list__box">
+              <div class="lds-default shopping-list__loader">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
               <!-- Cards list -->
               <ul class="shopping-list__cards list js-shopping-list">
                 <!-- Card -->
