@@ -1,0 +1,16 @@
+.scroll-btn {
+  position: fixed;
+  bottom: -100px;
+  right: 20px;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 5px solid rgba(79, 46, 232, 0.3);
+  background-color: #4f2ee8;
+  z-index: 9;
+  transition: bottom 0.7s ease;
+}
+
+.scroll-btn__svg {
+  fill: #fff;
+}

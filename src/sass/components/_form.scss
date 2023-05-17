@@ -15,17 +15,6 @@
   }
 }
 
-// .user-form.sign-in {
-//   .user-form__name-input-container,
-//   .user-form__sign-up-button {
-//     display: none;
-//   }
-// }
-// .user-form.sign-up {
-//   .user-form__sign-in-button {
-//     display: none;
-//   }
-// }
 .user-form__close-button {
   position: absolute;
   cursor: pointer;
@@ -92,14 +81,6 @@
   &:last-of-type {
     margin-bottom: 5px;
   }
-
-  // &:focus-within + .user-form__input-label {
-  //   background-color: var(--primary-bg);
-  //   transform-origin: left;
-  //   transform: scale(60%) translate(-20px, -52px);
-
-  //   ///some changes
-  // }
 
   &:not(:placeholder-shown) + .user-form__input-label {
     background-color: var(--primary-bg);
