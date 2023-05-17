@@ -77,7 +77,8 @@
     }
   }
 }
-.tui-next-is-ellip {
+.tui-next-is-ellip,
+.tui-prev-is-ellip {
   @media screen and (max-width: $tablet) {
     display: none !important;
   }
