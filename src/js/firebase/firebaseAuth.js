@@ -21,6 +21,9 @@ import { notification } from '../utils/notifications';
 
 import { app } from './firebaseApp';
 import { initialShoppingList } from '../components/shopping-list/pagination';
+const signUpForm = document.querySelector('.sign-up-form');
+const signInForm = document.querySelector('.sign-in-form');
+const passBar = document.querySelector('.password-bar-container');
 
 //create user
 
@@ -74,7 +77,9 @@ class FirebaseAuth {
 
           authComponent.classList.add('signed-out');
         })
-        .finally(() => {});
+        .finally(() => {
+          signInForm.reset();
+        });
     }
   };
 
@@ -120,6 +125,8 @@ class FirebaseAuth {
           }
         })
         .finally(() => {
+          signUpForm.reset();
+          passBar.classList.add('visually-hidden');
           // e.target.classList.add('visually-hidden');
           // userStatus = true;
         });
