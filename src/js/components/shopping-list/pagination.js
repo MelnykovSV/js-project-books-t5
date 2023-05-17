@@ -1,7 +1,6 @@
 import globalState from '../../globalState';
 import Pagination from 'tui-pagination';
 import { renderCurrentBookCards } from './cart';
-// const next = new URL('./../../../images/angle-right.svg', import.meta.url);
 
 let totalBookCards;
 let currentPage = 1;
@@ -9,15 +8,9 @@ let itemsPerPage;
 let visiblePages;
 let lastPage;
 
-// document.querySelector('.state-button').addEventListener('click', () => {
-//   console.log(globalState.shoppingList());
-// });
-
-// console.log(globalState.shoppingList());
 const query = matchMedia('(max-width: 767px)');
 
 export function initialShoppingList() {
-  // console.log(globalState.shoppingList());
   totalBookCards = globalState.shoppingList().length;
 
   if (query.matches) {
@@ -33,13 +26,6 @@ export function initialShoppingList() {
   }
 }
 
-// const nextImg = '<img src={next} alt="logo" />';
-// document.querySelector('.tui-next').innerHTML = nextImg;
-
-// let totalBookCards = globalState.shoppingList().length;
-
-// lastPage = Math.ceil(totalBookCards / itemsPerPage);
-
 ///resize sentry
 query.addEventListener('change', event => {
   if (event.matches) {
@@ -48,12 +34,11 @@ query.addEventListener('change', event => {
     smallResolutionPaginatorHandler();
     renderCurrentBookCards(findCurrentBookCards(1, 4));
     lastPage = Math.ceil(totalBookCards / itemsPerPage);
-    console.log('4');
   } else {
     itemsPerPage = 3;
     visiblePages = 3;
     bigResolutionPaginatorHandler();
-    console.log('3');
+
     renderCurrentBookCards(findCurrentBookCards(1, 3));
     lastPage = Math.ceil(totalBookCards / itemsPerPage);
   }
@@ -75,16 +60,11 @@ document.body.addEventListener('click', e => {
       page: currentPage,
     });
 
-    console.log('THIS');
-    console.log(findCurrentBookCards(currentPage, itemsPerPage));
     renderCurrentBookCards(findCurrentBookCards(currentPage, itemsPerPage));
-    console.log(currentPage);
-    console.log(globalState.shoppingList());
   }
 });
 
 export function findCurrentBookCards(page, itemsPerPage) {
-  // console.log(`Page number: ${currentPage}`);
   const currentBookCardsArray = globalState
     .shoppingList()
     .filter((item, index) => {
@@ -95,16 +75,13 @@ export function findCurrentBookCards(page, itemsPerPage) {
     });
 
   if (currentBookCardsArray.length) {
-    // console.log(currentBookCardsArray);
     return currentBookCardsArray;
   }
 
   currentPage -= 1;
   totalBookCards = globalState.shoppingList().length;
-  // console.log(`new current page ${currentPage}`);
+
   if (currentPage === 0) {
-    ///show plug
-    // console.log('show plug');
     document.querySelector('.js-plug')?.classList.remove('visually-hidden');
     return;
   }
@@ -122,7 +99,7 @@ export function findCurrentBookCards(page, itemsPerPage) {
       index <= currentPage * itemsPerPage - 1
     );
   });
-  // console.log(secondTry);
+
   return secondTry;
 }
 
@@ -164,7 +141,7 @@ function createPaginator({ totalItmes, itemsPerPage, visiblePages, page }) {
 
     instance.on('afterMove', e => {
       currentPage = e.page;
-      // console.log(`Moved to page ${currentPage}`);
+
       const currentBookCardsArray = findCurrentBookCards(e.page, itemsPerPage);
 
       renderCurrentBookCards(currentBookCardsArray);

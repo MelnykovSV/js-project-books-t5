@@ -1,14 +1,8 @@
 import { createMarkup } from './createMarkup';
-// import globalState from '../../globalState';
-
-// const bookCardsArray = globalState.shoppingList();
-// const bookCardsArray = JSON.parse(
-//   localStorage.getItem('userData')
-// ).shoppingList;
 
 export function renderCurrentBookCards(bookCardsArray) {
   const container = document.querySelector('.js-shopping-list');
-  // console.log(bookCardsArray);
+
   if (container) {
     if (bookCardsArray) {
       const listMarkup = bookCardsArray
@@ -24,5 +18,3 @@ export function renderCurrentBookCards(bookCardsArray) {
     }
   }
 }
-
-// renderCurrentBookCards(bookCardsArray);

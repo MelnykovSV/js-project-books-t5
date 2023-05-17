@@ -44,8 +44,6 @@ closeButton.addEventListener('click', () => {
 });
 
 bookModal.addEventListener('click', e => {
-  // e.preventDefault();
-
   if (e.target.classList.contains('book__add-btn')) {
     globalState.setShoppingList([...globalState.shoppingList(), currentBook]);
     // backdrop.classList.add('hidden');
