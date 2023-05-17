@@ -27,8 +27,6 @@ class FirebaseDatabase {
             ...snapshot.val(),
           };
           return result;
-        } else {
-          console.log('No data available');
         }
       })
       .catch(error => {
