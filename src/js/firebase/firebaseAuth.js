@@ -79,6 +79,7 @@ class FirebaseAuth {
         })
         .finally(() => {
           signInForm.reset();
+          passBar.classList.add('visually-hidden');
         });
     }
   };
@@ -116,6 +117,12 @@ class FirebaseAuth {
               // eslint-disable-next-line quotes
               "Your login credentials don't match an account in our system ",
               'Wrong email or password'
+            );
+          } else if (error.code === 'auth/too-many-requests') {
+            notification.error(
+              // eslint-disable-next-line quotes
+              'Too many unsuccessful tries. You can try to sign in later. ',
+              'Too many requests'
             );
           } else {
             notification.error(

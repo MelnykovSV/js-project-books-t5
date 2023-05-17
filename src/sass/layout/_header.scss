@@ -490,6 +490,7 @@ html.dark .switcher-theme__status {
 
 .is-logged .page-header__user-container {
   display: none;
+  min-width: 100px;
 
   @media screen and (min-width: $tablet) {
     display: block;

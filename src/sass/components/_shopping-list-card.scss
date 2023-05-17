@@ -94,6 +94,7 @@
   line-height: 1.17;
 
   letter-spacing: 0.03em;
+  max-width: calc(100% - 40px);
 
   color: var(--text-secondary-light);
 }

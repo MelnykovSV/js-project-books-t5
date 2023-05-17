@@ -48,7 +48,10 @@ bookModal.addEventListener('click', e => {
 
   if (e.target.classList.contains('book__add-btn')) {
     globalState.setShoppingList([...globalState.shoppingList(), currentBook]);
-    backdrop.classList.add('hidden');
+    // backdrop.classList.add('hidden');
+    popUpButtonContainer.innerHTML = createButtonMarkupRemove(
+      e.target.dataset.id
+    );
     document.body.classList.remove('body-lock');
   } else if (e.target.classList.contains('book__remove-btn')) {
     globalState.setShoppingList(
@@ -56,7 +59,8 @@ bookModal.addEventListener('click', e => {
         return item._id !== currentBook._id;
       })
     );
-    backdrop.classList.add('hidden');
+    // backdrop.classList.add('hidden');
+    popUpButtonContainer.innerHTML = createButtonMarkupAdd(e.target.dataset.id);
     document.body.classList.remove('body-lock');
   }
 });

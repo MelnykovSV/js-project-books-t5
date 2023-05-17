@@ -197,6 +197,8 @@ export function createMarkup(data) {
           <a
             class="shop__link link"
             href="${data.amazonUrl}"
+            target="_blank"
+          rel="noreferrer noopener"
             aria-label="Amazon"
           >
             <img
@@ -212,6 +214,8 @@ export function createMarkup(data) {
           <a
             class="shop__link link"
             href="${data.appleUrl}"
+            target="_blank"
+          rel="noreferrer noopener"
             aria-label="Apple books"
           >
             <img
@@ -227,6 +231,8 @@ export function createMarkup(data) {
           <a
             class="shop__link link"
             href="${data.bookShopUrl}"
+            target="_blank"
+          rel="noreferrer noopener"
             aria-label="Bookshop"
           >
             <img
