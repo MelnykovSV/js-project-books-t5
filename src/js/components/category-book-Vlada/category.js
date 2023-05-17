@@ -29,7 +29,7 @@ function markupBooksByCategory(data, category) {
     .map(
       ({ book_image, title, author, _id }) => `
    <li class="category__item list" data-id="${_id}">
-    <div class="category__overlay">
+    <div class="category__thumb">
     <img class="category__image" src="${book_image}" alt="book ${title}" />
     <p class="category__text--overlay">Quick view</p>
     </div>
