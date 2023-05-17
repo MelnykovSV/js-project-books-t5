@@ -31,6 +31,8 @@ const auth = getAuth(app);
 
 const authComponent = document.querySelector('.auth-component');
 
+const shoppingListLoader = document.querySelector('.shopping-list__loader');
+
 let userStatus = false;
 
 class FirebaseAuth {
@@ -175,6 +177,11 @@ class FirebaseAuth {
             globalState.set(data);
 
             localStorage.setItem('userData', JSON.stringify(data));
+
+            if (shoppingListLoader) {
+              shoppingListLoader.style.display = 'none';
+            }
+
             initialShoppingList();
             initialCartCounter();
           } else {
