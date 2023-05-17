@@ -19,9 +19,9 @@ export function createMarkupAllBooks(data) {
 function createMarkupBook(books) {
   return books
     .map(
-      ({ book_image, title, author, _id, description }) => `
+      ({ book_image, title, author, _id }) => `
   <li class="books__item list" data-id="${_id}">
-    <div class="books__overlay">
+    <div class="books__thumb">
     <img class="books__image" src="${book_image}" alt="book ${title}" />
     <p class="books__text--overlay">Quick view</p>
     </div>
