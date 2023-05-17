@@ -1,1 +1,0 @@
-{"mappings":"iiBACAA,EADAC,EAAA,UACOC,KAAK,O","sources":["src/test.js"],"sourcesContent":["import toastr from 'toastr';\ntoastr.info('info');\n"],"names":["$parcel$interopDefault","parcelRequire","info"],"version":3,"file":"test.87292724.js.map"}
