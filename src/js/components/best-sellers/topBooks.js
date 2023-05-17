@@ -34,9 +34,8 @@ function bestSellersClickHandler(event) {
     const activeLinkEl = categoryList.querySelector('.active-link');
     activeLinkEl.classList.remove('active-link');
 
-    const attributeValue = categoryName.split(' ').join('');
     const currentLink = document.querySelector(
-      `[data-category=${attributeValue}]`
+      `[data-category="${categoryName}"]`
     );
     currentLink.classList.add('active-link');
 
