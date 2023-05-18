@@ -5,10 +5,10 @@ const Theme = {
   DARK: 'dark',
 };
 
-const switcherCheckboxEl = document.querySelector('.js-switcher-theme');
+const switcherEl = document.querySelector('.js-switcher-theme');
 const htmlEl = document.querySelector('html');
 
-switcherCheckboxEl.addEventListener('click', () => {
+switcherEl.addEventListener('click', () => {
   const isLight = htmlEl.classList.contains('light');
 
   const theme = isLight ? Theme.DARK : Theme.LIGHT;
