@@ -19,7 +19,7 @@ class StateUtility {
 
   //Returns shoppingList value (has to be an array of objects or empty array)
   shoppingList() {
-    return [...globalStateObject.shoppingList];
+    return globalStateObject.shoppingList;
   }
 
   //Returns theme value ('light'||'dark')
