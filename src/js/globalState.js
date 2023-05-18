@@ -8,7 +8,7 @@ let globalStateObject = JSON.parse(JSON.stringify(INITIAL_STATE_VALUE));
 class StateUtility {
   //Returns global state object
   get() {
-    return globalStateObject;
+    return JSON.parse(JSON.stringify(INITIAL_STATE_VALUE));
   }
 
   //Sets global state object
@@ -19,8 +19,7 @@ class StateUtility {
 
   //Returns shoppingList value (has to be an array of objects or empty array)
   shoppingList() {
-    console.log(globalStateObject);
-    return globalStateObject.shoppingList;
+    return [...globalStateObject.shoppingList];
   }
 
   //Returns theme value ('light'||'dark')
