@@ -1,4 +1,5 @@
 import authUtils from '../firebase/firebaseAuth';
+import { initialCartCounter } from '../components/header/cartNumber';
 
 const logoutButtons = document.querySelectorAll('.log-out-btn');
 
@@ -9,6 +10,7 @@ authUtils.authSentry();
 if (localStorage.getItem('userName')) {
   authComponent.querySelector('.auth-component__user-name').textContent =
     localStorage.getItem('userName');
+  initialCartCounter();
 
   if (!document.body.classList.contains('is-logged')) {
     document.body.classList.add('is-logged');

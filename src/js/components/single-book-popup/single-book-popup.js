@@ -47,6 +47,10 @@ bookModal.addEventListener('click', e => {
   if (e.target.classList.contains('book__add-btn')) {
     globalState.setShoppingList([...globalState.shoppingList(), currentBook]);
     // backdrop.classList.add('hidden');
+    localStorage.setItem(
+      'userShoppingListCounter',
+      globalState.shoppingList().length
+    );
     popUpButtonContainer.innerHTML = createButtonMarkupRemove(
       e.target.dataset.id
     );
@@ -57,6 +61,11 @@ bookModal.addEventListener('click', e => {
         return item._id !== currentBook._id;
       })
     );
+    localStorage.setItem(
+      'userShoppingListCounter',
+      globalState.shoppingList().length
+    );
+
     // backdrop.classList.add('hidden');
     popUpButtonContainer.innerHTML = createButtonMarkupAdd(e.target.dataset.id);
     document.body.classList.remove('body-lock');

@@ -52,6 +52,10 @@ document.body.addEventListener('click', e => {
       })
     );
     totalBookCards = globalState.shoppingList().length;
+    localStorage.setItem(
+      'userShoppingListCounter',
+      globalState.shoppingList().length
+    );
 
     createPaginator({
       totalItmes: totalBookCards,
