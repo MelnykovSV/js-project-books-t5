@@ -31,6 +31,12 @@ query.addEventListener('change', event => {
   if (event.matches) {
     itemsPerPage = 4;
     visiblePages = 2;
+    console.log(currentPage);
+    lastPage = Math.ceil(totalBookCards / itemsPerPage);
+    if (currentPage > lastPage) {
+      currentPage = lastPage;
+    }
+
     smallResolutionPaginatorHandler();
     renderCurrentBookCards(findCurrentBookCards(1, 4));
     lastPage = Math.ceil(totalBookCards / itemsPerPage);
