@@ -202,13 +202,12 @@ class FirebaseAuth {
         // User is signed out
         userStatus = false;
         localStorage.removeItem('userData');
-        // if (localStorage.getItem('globalState')) {
-        //   globalState.set(JSON.parse(localStorage.getItem('globalState')));
-        // }
-        // else {
-        //   globalState.set(INITIAL_STATE_VALUE);
-        //   globalState.writeToLocalStorage();
-        // }
+        if (localStorage.getItem('globalState')) {
+          globalState.set(JSON.parse(localStorage.getItem('globalState')));
+        } else {
+          globalState.set(INITIAL_STATE_VALUE);
+          globalState.writeToLocalStorage();
+        }
 
         authComponent.classList.add('signed-out');
         closingCartCounter();
