@@ -2,13 +2,29 @@
   position: fixed;
   bottom: -100px;
   right: 20px;
-  width: 54px;
-  height: 54px;
+  z-index: 3;
+
+  padding: 0;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
-  border: 5px solid rgba(79, 46, 232, 0.3);
+  border: 5px solid var(--primary-bg);
+
+  transition: bottom 0.7s ease, border-color var(--time) var(--cubic);
+
+  &:hover {
+    border-color: rgba(79, 46, 232, 0.3);
+  }
+}
+
+.scroll-btn > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
   background-color: #4f2ee8;
-  z-index: 9;
-  transition: bottom 0.7s ease;
+  border-radius: 50%;
 }
 
 .scroll-btn__svg {
