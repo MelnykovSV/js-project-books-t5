@@ -3,7 +3,7 @@ import globalState from '../../globalState';
 
 export function initialCartCounter() {
   if (localStorage.getItem('userShoppingListCounter')) {
-    console.log(JSON.parse(localStorage.getItem('userShoppingListCounter')));
+    // console.log(JSON.parse(localStorage.getItem('userShoppingListCounter')));
     counter.textContent = JSON.parse(
       localStorage.getItem('userShoppingListCounter')
     );
