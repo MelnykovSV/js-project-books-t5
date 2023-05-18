@@ -52,7 +52,7 @@ class StateUtility {
     if (status) {
       databaseUtils.writeUserData();
       localStorage.setItem('userData', JSON.stringify(this.get()));
-    }
+    } else this.writeToLocalStorage();
   }
 }
 
