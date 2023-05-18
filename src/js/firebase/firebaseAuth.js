@@ -61,6 +61,11 @@ class FirebaseAuth {
           //   'userShoppingListCounter',
           //   globalState.shoppingList().length
           // );
+          // const nameLabels = document.querySelectorAll('.user__name');
+
+          // nameLabels.forEach(item => {
+          //   item.textContent = `${name}`;
+          // });
 
           document
             .querySelector('.backdrop-form')
@@ -308,9 +313,13 @@ class FirebaseAuth {
   };
 
   updateUserInterface = name => {
-    authComponent.querySelector(
-      '.auth-component__user-name'
-    ).textContent = `${name}`;
+    // authComponent.querySelector(
+    //   '.auth-component__user-name'
+    // ).textContent = `${name}`;
+    console.log(document.querySelector('.user__name'));
+    document.querySelectorAll('.user__name').forEach(item => {
+      item.textContent = `${name}`;
+    });
   };
 
   getUserStatus = () => {
