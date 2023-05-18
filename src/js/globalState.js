@@ -8,7 +8,7 @@ let globalStateObject = JSON.parse(JSON.stringify(INITIAL_STATE_VALUE));
 class StateUtility {
   //Returns global state object
   get() {
-    return JSON.parse(JSON.stringify(INITIAL_STATE_VALUE));
+    return JSON.parse(JSON.stringify(globalStateObject));
   }
 
   //Sets global state object
