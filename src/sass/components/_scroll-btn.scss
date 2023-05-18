@@ -8,13 +8,9 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  border: 5px solid var(--primary-bg);
+  border: 5px solid rgba(79, 46, 232, 0.3);
 
-  transition: bottom 0.7s ease, border-color var(--time) var(--cubic);
-
-  &:hover {
-    border-color: rgba(79, 46, 232, 0.3);
-  }
+  transition: bottom 0.7s ease;
 }
 
 .scroll-btn > span {
