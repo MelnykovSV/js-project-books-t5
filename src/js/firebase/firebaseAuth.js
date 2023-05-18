@@ -1,6 +1,6 @@
 import globalState from '../globalState';
 import {
-  initialCartCounter,
+  initialCartCounterBackup,
   closingCartCounter,
 } from '../components/header/cartNumber';
 
@@ -57,6 +57,10 @@ class FirebaseAuth {
           this.updateUserName(name);
           //new
           localStorage.setItem('userName', name);
+          // localStorage.setItem(
+          //   'userShoppingListCounter',
+          //   globalState.shoppingList().length
+          // );
 
           document
             .querySelector('.backdrop-form')
@@ -103,6 +107,7 @@ class FirebaseAuth {
           const user = userCredential.user;
 
           localStorage.setItem('userName', user.displayName);
+
           document
             .querySelector('.backdrop-form')
             .classList.add('backdrop-form--is-hidden');
@@ -149,6 +154,7 @@ class FirebaseAuth {
           .querySelector('.js-user')
           .classList.remove('user--is-active-btns-box');
         localStorage.removeItem('userName');
+        localStorage.removeItem('userShoppingListCounter');
       })
       .catch(error => {
         // An error happened.
@@ -171,19 +177,24 @@ class FirebaseAuth {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         localStorage.setItem('userName', user.displayName);
+
         userStatus = true;
         databaseUtils.getUserData().then(data => {
           if (data) {
             globalState.set(data);
 
             localStorage.setItem('userData', JSON.stringify(data));
+            localStorage.setItem(
+              'userShoppingListCounter',
+              data.shoppingList.length
+            );
 
             if (shoppingListLoader) {
               shoppingListLoader.style.display = 'none';
             }
 
             initialShoppingList();
-            initialCartCounter();
+            initialCartCounterBackup();
           } else {
             globalState.set(INITIAL_STATE_VALUE);
           }
@@ -202,6 +213,7 @@ class FirebaseAuth {
         // User is signed out
         userStatus = false;
         localStorage.removeItem('userData');
+
         if (localStorage.getItem('globalState')) {
           globalState.set(JSON.parse(localStorage.getItem('globalState')));
         } else {

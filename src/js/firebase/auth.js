@@ -1,4 +1,5 @@
 import authUtils from '../firebase/firebaseAuth';
+import { initialCartCounter } from '../components/header/cartNumber';
 
 const signUpForm = document.querySelector('.sign-up-form');
 const signInForm = document.querySelector('.sign-in-form');
@@ -11,6 +12,8 @@ authUtils.authSentry();
 if (localStorage.getItem('userName')) {
   authComponent.querySelector('.auth-component__user-name').textContent =
     localStorage.getItem('userName');
+
+  initialCartCounter();
 
   if (!document.body.classList.contains('is-logged')) {
     document.body.classList.add('is-logged');

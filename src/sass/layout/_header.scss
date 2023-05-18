@@ -245,6 +245,7 @@ html.dark .switcher-theme__status {
 
   display: none;
   align-items: center;
+  min-width: 184px;
 
   @media screen and (min-width: $tablet) {
     position: relative;
@@ -289,6 +290,7 @@ html.dark .switcher-theme__status {
 
 .user__icon {
   fill: var(--default-primary-color);
+  margin-left: auto;
 
   transform: rotate(0);
   transition: transform var(--time) var(--cubic);
