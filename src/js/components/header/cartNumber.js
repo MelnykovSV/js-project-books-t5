@@ -1,4 +1,5 @@
 const counter = document.querySelector('.page-nav__cart-number');
+const counters = document.querySelectorAll('.page-nav__cart-number');
 import globalState from '../../globalState';
 
 export function initialCartCounter() {
@@ -15,8 +16,12 @@ export function initialCartCounter() {
 
 export function initialCartCounterBackup() {
   if (globalState.shoppingList().length) {
-    counter.textContent = globalState.shoppingList().length;
-    counter.classList.remove('visually-hidden');
+    counters.forEach(item => {
+      item.textContent = globalState.shoppingList().length;
+      item.classList.remove('visually-hidden');
+    });
+    // counter.textContent = globalState.shoppingList().length;
+    // counter.classList.remove('visually-hidden');
   }
 }
 export function closingCartCounter() {
@@ -25,12 +30,20 @@ export function closingCartCounter() {
 
 export function cartCounter() {
   if (!globalState.shoppingList().length) {
-    counter.textContent = '';
-    counter.classList.add('visually-hidden');
+    counters.forEach(item => {
+      item.textContent = '';
+      item.classList.add('visually-hidden');
+    });
+    // counter.textContent = '';
+    // counter.classList.add('visually-hidden');
     return;
   }
+  counters.forEach(item => {
+    item.textContent = globalState.shoppingList().length;
+    item.classList.remove('visually-hidden');
+  });
 
-  counter.textContent = globalState.shoppingList().length;
+  // counter.textContent = globalState.shoppingList().length;
 
-  counter.classList.remove('visually-hidden');
+  // counter.classList.remove('visually-hidden');
 }
