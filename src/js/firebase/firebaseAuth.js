@@ -316,7 +316,7 @@ class FirebaseAuth {
     // authComponent.querySelector(
     //   '.auth-component__user-name'
     // ).textContent = `${name}`;
-    console.log(document.querySelector('.user__name'));
+    // console.log(document.querySelector('.user__name'));
     document.querySelectorAll('.user__name').forEach(item => {
       item.textContent = `${name}`;
     });
