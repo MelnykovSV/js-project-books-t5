@@ -5,12 +5,22 @@ import globalState from '../../globalState';
 export function initialCartCounter() {
   if (localStorage.getItem('userShoppingListCounter')) {
     // console.log(JSON.parse(localStorage.getItem('userShoppingListCounter')));
-    counter.textContent = JSON.parse(
-      localStorage.getItem('userShoppingListCounter')
-    );
-    if (JSON.parse(localStorage.getItem('userShoppingListCounter'))) {
-      counter.classList.remove('visually-hidden');
-    }
+
+    counters.forEach(item => {
+      item.textContent = JSON.parse(
+        localStorage.getItem('userShoppingListCounter')
+      );
+      if (JSON.parse(localStorage.getItem('userShoppingListCounter'))) {
+        item.classList.remove('visually-hidden');
+      }
+    });
+
+    // counter.textContent = JSON.parse(
+    //   localStorage.getItem('userShoppingListCounter')
+    // );
+    // if (JSON.parse(localStorage.getItem('userShoppingListCounter'))) {
+    //   counter.classList.remove('visually-hidden');
+    // }
   }
 }
 
@@ -25,7 +35,11 @@ export function initialCartCounterBackup() {
   }
 }
 export function closingCartCounter() {
-  counter.classList.add('visually-hidden');
+  counters.forEach(item => {
+    item.classList.add('visually-hidden');
+  });
+
+  // counter.classList.add('visually-hidden');
 }
 
 export function cartCounter() {
